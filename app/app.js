@@ -2,6 +2,16 @@
  * Created by joaopedrodslv@gmail.com on 12/12/2016.
  */
 
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyAC_Af6dKSoix70CQfBnCM_msIbK8XtqJY",
+    authDomain: "realtime-vue-firebase.firebaseapp.com",
+    databaseURL: "https://realtime-vue-firebase.firebaseio.com",
+    storageBucket: "realtime-vue-firebase.appspot.com",
+    messagingSenderId: "894581905276"
+};
+var firebaseApp = firebase.initializeApp(config);
+
 var chatComponent = Vue.extend({
     template: `
             <style type="text/css">
@@ -87,6 +97,7 @@ var chatComponent = Vue.extend({
     }
 })
 
+var db = firebaseApp.database()
 var roomsComponent = Vue.extend({
     template: `
         <div class="col-md-4" v-for="o in rooms">
@@ -121,6 +132,38 @@ var roomsComponent = Vue.extend({
     }
 })
 
+var rooms = [
+    {id: '001', name: 'PHP', description: 'Entusiasta do PHP'},
+    {id: '002', name: 'Java', description: 'Developer experts'},
+    {id: '003', name: 'C#', description: 'Os caras do C#'},
+    {id: '004', name: 'C++', description: 'Fissurados por programação'},
+    {id: '005', name: 'Javascript', description: 'Olha a web aí!'},
+    {id: '006', name: 'Vue.js', description: 'Chat dos caras do data-binding'},
+]
+
+var roomsCreateComponent = Vue.extend({
+    template: `
+        <ul>
+            <li v-for="o in rooms">
+                {{o.name}}
+            </li>
+        </ul>
+    `,
+    firebase: {
+        rooms: db.ref('chat/rooms')
+    },
+    ready: function () {
+        var chatRef = db.ref('chat')
+        var roomsChildren = chatRef.child('rooms')
+        rooms.forEach(function(room){
+            roomsChildren.child(room.id).set({
+                name: room.name,
+                description: room.description
+            })
+        })
+    }
+})
+
 var appComponent = Vue.extend({})
 
 var router = new VueRouter()
@@ -131,6 +174,9 @@ router.map({
     },
     '/rooms': {
         component: roomsComponent
+    },
+    '/rooms-create': {
+        component: roomsCreateComponent
     }
 })
 
