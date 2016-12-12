@@ -11,8 +11,8 @@
         }
         .chat li
         {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
         }
         .chat li.left .chat-body
         {
@@ -39,20 +39,15 @@
                     <div class="panel-heading">Chat</div>
                     <div class="panel-body">
                         <ul class="chat list-unstyled">
-                            <li class="left clearfix">
-                                <span class="pull-left">
-                                    <img src="http://placehold.it/50/000FFF/fff&text=00" class="img-circle">
+                            <li v-for="o in chat.messages"
+                                    class="clearfix"
+                                    :class="{left: !isUser(o.email), right: isUser(o.email)}">
+                                <span :class="{'pull-left': !isUser(o.email), 'pull-right': isUser(o.email)}">
+                                    <img :src="o.photo" class="img-circle">
                                 </span>
                                 <div class="chat-body">
-                                    <p>Olá, eu sou o Fulano, como você está?</p>
-                                </div>
-                            </li>
-                            <li class="right clearfix">
-                                <span class="pull-right">
-                                    <img src="http://placehold.it/50/000FFF/fff&text=EU" class="img-circle">
-                                </span>
-                                <div class="chat-body">
-                                    <p>Estou bem, sou rocks.</p>
+                                    <strong>{{o.name}}</strong>
+                                    <p>{{o.text}}</p>
                                 </div>
                             </li>
                         </ul>
@@ -77,7 +72,29 @@
     var chat = new Vue({
         el: '#chat',
         data: {
-            message: 'Olá mundo'
+            user: {
+                email: 'eu@gmail.com',
+                name: 'Eu'
+            },
+            chat: {
+                messages: [
+                    {
+                        email: 'fulano@gmail.com',
+                        text: 'Olá, eu sou o Fulano, como você está?',
+                        name: 'Fulano',
+                        photo: 'http://placehold.it/50/000FFF/fff&text=00'
+                    },
+                    {
+                        email: 'eu@gmail.com',
+                        text: 'Estou bem, sou rocks.',
+                        name: 'Eu',
+                        photo: 'http://placehold.it/50/000FFF/fff&text=EU'
+                    }
+                ]
+            },
+            isUser: function(email) {
+                return this.user.email == email
+            }
         }
     })
 </script>
