@@ -11,6 +11,7 @@ var config = {
     messagingSenderId: "894581905276"
 };
 var firebaseApp = firebase.initializeApp(config);
+var db = firebaseApp.database()
 
 var chatComponent = Vue.extend({
     template: `
@@ -43,7 +44,7 @@ var chatComponent = Vue.extend({
                 <div class="panel-heading">Chat</div>
                 <div class="panel-body">
                     <ul class="chat list-unstyled">
-                        <li v-for="o in chat.messages"
+                        <li v-for="o in messages"
                                 class="clearfix"
                                 :class="{left: !isUser(o.email), right: isUser(o.email)}">
                             <span :class="{'pull-left': !isUser(o.email), 'pull-right': isUser(o.email)}">
@@ -58,46 +59,44 @@ var chatComponent = Vue.extend({
                 </div>
                 <div class="panel-footer">
                     <div class="input-group">
-                        <input type="text" class="form-control input-md" placeholder="Digite sua mensagem">
+                        <input type="text" 
+                            class="form-control input-md" 
+                            placeholder="Digite sua mensagem"
+                            v-model="message">
                         <span class="input-group-btn">
-                            <button class="btn btn-success btn-md">Enviar</button>
+                            <button class="btn btn-success btn-md" @click="sendMessage">Enviar</button>
                         </span>
                     </div>
                 </div>
             </div>
         `,
+    created: function() {
+        var roomRef = 'chat/rooms/' + this.$route.params.room;
+        this.$bindAsArray('messages', db.ref(roomRef + '/messages'))
+    },
     data: function() {
         return {
             user: {
                 email: 'eu@gmail.com',
                 name: 'Eu'
             },
-            chat: {
-                messages: [
-                    {
-                        email: 'fulano@gmail.com',
-                        text: 'Olá, eu sou o Fulano, como você está?',
-                        name: 'Fulano',
-                        photo: 'http://placehold.it/50/000FFF/fff&text=00'
-                    },
-                    {
-                        email: 'eu@gmail.com',
-                        text: 'Estou bem, sou rocks.',
-                        name: 'Eu',
-                        photo: 'http://placehold.it/50/000FFF/fff&text=EU'
-                    }
-                ]
-            }
+            message: ''
         }
     },
     methods: {
         isUser: function(email) {
             return this.user.email == email
+        },
+        sendMessage: function() {
+            this.$firebaseRefs.messages.push({
+                email: this.user.email,
+                name: this.user.name,
+                text: this.message
+            })
         }
     }
 })
 
-var db = firebaseApp.database()
 var roomsComponent = Vue.extend({
     template: `
         <div class="col-md-4" v-for="o in rooms">
@@ -113,17 +112,8 @@ var roomsComponent = Vue.extend({
             </div>
         </div>
     `,
-    data: function() {
-        return {
-            rooms: [
-                {id: '001', name: 'PHP', description: 'Entusiasta do PHP'},
-                {id: '002', name: 'Java', description: 'Developer experts'},
-                {id: '003', name: 'C#', description: 'Os caras do C#'},
-                {id: '004', name: 'C++', description: 'Fissurados por programação'},
-                {id: '005', name: 'Javascript', description: 'Olha a web aí!'},
-                {id: '006', name: 'Vue.js', description: 'Chat dos caras do data-binding'},
-            ]
-        }
+    firebase: {
+        rooms: db.ref('chat/rooms')
     },
     methods: {
         goToChat: function(room) {
