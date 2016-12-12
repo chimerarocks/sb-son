@@ -2,6 +2,12 @@ require('./jquery')
 require('bootstrap')
 var db = require('./firebase-db')
 var md5 = require('blueimp-md5')
+var Vue = require('vue')
+var VueRouter = require('vue-router')
+var VueFire = require('vuefire')
+
+Vue.use(VueRouter)
+Vue.use(VueFire)
 
 var chatComponent = Vue.extend({
     template: `
