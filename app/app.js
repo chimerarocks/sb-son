@@ -27,12 +27,12 @@ var chatComponent = Vue.extend({
                 }
                 .chat li.left .chat-body
                 {
-                    margin-left: 70px;
+                    margin-left: 100px;
                 }
                 .chat li.right .chat-body
                 {
                     text-align: right;
-                    margin-right: 70px;
+                    margin-right: 100px;
                 }
                 .panel-body
                 {
@@ -62,7 +62,8 @@ var chatComponent = Vue.extend({
                         <input type="text" 
                             class="form-control input-md" 
                             placeholder="Digite sua mensagem"
-                            v-model="message">
+                            v-model="message"
+                            @keyup.enter="sendMessage">
                         <span class="input-group-btn">
                             <button class="btn btn-success btn-md" @click="sendMessage">Enviar</button>
                         </span>
@@ -71,14 +72,16 @@ var chatComponent = Vue.extend({
             </div>
         `,
     created: function() {
-        var roomRef = 'chat/rooms/' + this.$route.params.room;
+        var roomRef = 'chat/rooms/' + this.$route.params.room
         this.$bindAsArray('messages', db.ref(roomRef + '/messages'))
+        this.$set('user.photo', 'http://www.gravatar.com/avatar/' + md5(this.user.email) + '.jpg')
     },
     data: function() {
         return {
             user: {
                 email: 'eu@gmail.com',
-                name: 'Eu'
+                name: 'Eu',
+                photo: ''
             },
             message: ''
         }
@@ -91,8 +94,10 @@ var chatComponent = Vue.extend({
             this.$firebaseRefs.messages.push({
                 email: this.user.email,
                 name: this.user.name,
-                text: this.message
+                text: this.message,
+                photo: this.user.photo
             })
+            this.message = ''
         }
     }
 })
@@ -102,7 +107,7 @@ var roomsComponent = Vue.extend({
         <div class="col-md-4" v-for="o in rooms">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    {{ o.name }}
+                     {{o.name}}
                 </div>
                 <div class="panel-body">
                     {{ o.description }}
@@ -115,27 +120,30 @@ var roomsComponent = Vue.extend({
     firebase: {
         rooms: db.ref('chat/rooms')
     },
+    created: function() {
+        console.log(rooms[0])
+    },
     methods: {
         goToChat: function(room) {
-            this.$route.router.go('/chat/' + room.id)
+            this.$route.router.go('/chat/' + room._id)
         }
     }
 })
 
 var rooms = [
-    {id: '001', name: 'PHP', description: 'Entusiasta do PHP'},
-    {id: '002', name: 'Java', description: 'Developer experts'},
-    {id: '003', name: 'C#', description: 'Os caras do C#'},
-    {id: '004', name: 'C++', description: 'Fissurados por programação'},
-    {id: '005', name: 'Javascript', description: 'Olha a web aí!'},
-    {id: '006', name: 'Vue.js', description: 'Chat dos caras do data-binding'},
+    {_id: '001', name: 'PHP', description: 'Entusiasta do PHP'},
+    {_id: '002', name: 'Java', description: 'Developer experts'},
+    {_id: '003', name: 'C#', description: 'Os caras do C#'},
+    {_id: '004', name: 'C++', description: 'Fissurados por programação'},
+    {_id: '005', name: 'Javascript', description: 'Olha a web aí!'},
+    {_id: '006', name: 'Vue.js', description: 'Chat dos caras do data-binding'},
 ]
 
 var roomsCreateComponent = Vue.extend({
     template: `
         <ul>
             <li v-for="o in rooms">
-                {{o.name}}
+                {{o._id}} - {{o.name}}
             </li>
         </ul>
     `,
@@ -146,7 +154,8 @@ var roomsCreateComponent = Vue.extend({
         var chatRef = db.ref('chat')
         var roomsChildren = chatRef.child('rooms')
         rooms.forEach(function(room){
-            roomsChildren.child(room.id).set({
+            roomsChildren.child(room._id).set({
+                _id: room._id,
                 name: room.name,
                 description: room.description
             })
