@@ -1,20 +1,9 @@
-/**
- * Created by joaopedrodslv@gmail.com on 12/12/2016.
- */
+requirejs(['firebase-config'], function(config) {
+    var firebaseApp = firebase.initializeApp(config);
+    var db = firebaseApp.database()
 
-// Initialize Firebase
-var config = {
-    apiKey: "AIzaSyAC_Af6dKSoix70CQfBnCM_msIbK8XtqJY",
-    authDomain: "realtime-vue-firebase.firebaseapp.com",
-    databaseURL: "https://realtime-vue-firebase.firebaseio.com",
-    storageBucket: "realtime-vue-firebase.appspot.com",
-    messagingSenderId: "894581905276"
-};
-var firebaseApp = firebase.initializeApp(config);
-var db = firebaseApp.database()
-
-var chatComponent = Vue.extend({
-    template: `
+    var chatComponent = Vue.extend({
+        template: `
             <style type="text/css">
                 .chat
                 {
@@ -71,34 +60,34 @@ var chatComponent = Vue.extend({
                 </div>
             </div>
         `,
-    created: function() {
-        var roomRef = 'chat/rooms/' + this.$route.params.room
-        this.$bindAsArray('messages', db.ref(roomRef + '/messages'))
-    },
-    data: function() {
-        return {
-            user: JSON.parse(window.localStorage.getItem('user')),
-            message: ''
-        }
-    },
-    methods: {
-        isUser: function(email) {
-            return this.user.email == email
+        created: function() {
+            var roomRef = 'chat/rooms/' + this.$route.params.room
+            this.$bindAsArray('messages', db.ref(roomRef + '/messages'))
         },
-        sendMessage: function() {
-            this.$firebaseRefs.messages.push({
-                email: this.user.email,
-                name: this.user.name,
-                text: this.message,
-                photo: this.user.photo
-            })
-            this.message = ''
+        data: function() {
+            return {
+                user: JSON.parse(window.localStorage.getItem('user')),
+                message: ''
+            }
+        },
+        methods: {
+            isUser: function(email) {
+                return this.user.email == email
+            },
+            sendMessage: function() {
+                this.$firebaseRefs.messages.push({
+                    email: this.user.email,
+                    name: this.user.name,
+                    text: this.message,
+                    photo: this.user.photo
+                })
+                this.message = ''
+            }
         }
-    }
-})
+    })
 
-var roomsComponent = Vue.extend({
-    template: `
+    var roomsComponent = Vue.extend({
+        template: `
         <div class="col-md-4" v-for="o in rooms">
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -136,81 +125,82 @@ var roomsComponent = Vue.extend({
             </div>
         </div>
     `,
-    firebase: {
-        rooms: db.ref('chat/rooms')
-    },
-    data: function() {
-        return {
-            name: '',
-            email: '',
-            room: null
-        }
-    },
-    methods: {
-        login: function() {
-            var user = {
-                name: this.name,
-                email: this.email,
-                photo: 'http://www.gravatar.com/avatar/' + md5(this.email) + '.jpg'
-            }
-            window.localStorage.setItem('user', JSON.stringify(user))
-            $('#modalLoginEmail').modal('hide')
-            this.$route.router.go('/chat/' + this.room._id)
+        firebase: {
+            rooms: db.ref('chat/rooms')
         },
-        openModal: function(room) {
-            this.room = room
-            $('#modalLoginEmail').modal('show')
+        data: function() {
+            return {
+                name: '',
+                email: '',
+                room: null
+            }
+        },
+        methods: {
+            login: function() {
+                var user = {
+                    name: this.name,
+                    email: this.email,
+                    photo: 'http://www.gravatar.com/avatar/' + md5(this.email) + '.jpg'
+                }
+                window.localStorage.setItem('user', JSON.stringify(user))
+                $('#modalLoginEmail').modal('hide')
+                this.$route.router.go('/chat/' + this.room._id)
+            },
+            openModal: function(room) {
+                this.room = room
+                $('#modalLoginEmail').modal('show')
+            }
         }
-    }
-})
+    })
 
-var rooms = [
-    {_id: '001', name: 'PHP', description: 'Entusiasta do PHP'},
-    {_id: '002', name: 'Java', description: 'Developer experts'},
-    {_id: '003', name: 'C#', description: 'Os caras do C#'},
-    {_id: '004', name: 'C++', description: 'Fissurados por programação'},
-    {_id: '005', name: 'Javascript', description: 'Olha a web aí!'},
-    {_id: '006', name: 'Vue.js', description: 'Chat dos caras do data-binding'},
-]
+    var rooms = [
+        {_id: '001', name: 'PHP', description: 'Entusiasta do PHP'},
+        {_id: '002', name: 'Java', description: 'Developer experts'},
+        {_id: '003', name: 'C#', description: 'Os caras do C#'},
+        {_id: '004', name: 'C++', description: 'Fissurados por programação'},
+        {_id: '005', name: 'Javascript', description: 'Olha a web aí!'},
+        {_id: '006', name: 'Vue.js', description: 'Chat dos caras do data-binding'},
+    ]
 
-var roomsCreateComponent = Vue.extend({
-    template: `
+    var roomsCreateComponent = Vue.extend({
+        template: `
         <ul>
             <li v-for="o in rooms">
                 {{o._id}} - {{o.name}}
             </li>
         </ul>
     `,
-    firebase: {
-        rooms: db.ref('chat/rooms')
-    },
-    ready: function () {
-        var chatRef = db.ref('chat')
-        var roomsChildren = chatRef.child('rooms')
-        rooms.forEach(function(room){
-            roomsChildren.child(room._id).set({
-                _id: room._id,
-                name: room.name,
-                description: room.description
+        firebase: {
+            rooms: db.ref('chat/rooms')
+        },
+        ready: function () {
+            var chatRef = db.ref('chat')
+            var roomsChildren = chatRef.child('rooms')
+            rooms.forEach(function(room){
+                roomsChildren.child(room._id).set({
+                    _id: room._id,
+                    name: room.name,
+                    description: room.description
+                })
             })
-        })
-    }
+        }
+    })
+
+    var appComponent = Vue.extend({})
+
+    var router = new VueRouter()
+
+    router.map({
+        '/chat/:room': {
+            component: chatComponent
+        },
+        '/rooms': {
+            component: roomsComponent
+        },
+        '/rooms-create': {
+            component: roomsCreateComponent
+        }
+    })
+
+    router.start(appComponent, '#app')
 })
-
-var appComponent = Vue.extend({})
-
-var router = new VueRouter()
-
-router.map({
-    '/chat/:room': {
-        component: chatComponent
-    },
-    '/rooms': {
-        component: roomsComponent
-    },
-    '/rooms-create': {
-        component: roomsCreateComponent
-    }
-})
-
-router.start(appComponent, '#app')
