@@ -62,5 +62,8 @@ export default {
             // return store.state.teams
             return this.$store.state.teams
         }
+    },
+    created() {
+        this.$store.dispatch('load-teams')
     }
 }
