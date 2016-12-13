@@ -39,17 +39,8 @@ new Vue({
             new Team('Figueirense', require('./assets/figueirense_60x60.png')),
             new Team('Santa Cruz', require('./assets/santa_cruz_60x60.png')),
             new Team('América-MG', require('./assets/america_mg_60x60.png'))
-        ]
-    },
-    created() {
-        let indexCasa = Math.floor(Math.random() * 20),
-            indexFora = Math.floor(Math.random() * 20)
-
-        this.novoJogo.casa.time = this.teams[indexCasa]
-        this.novoJogo.casa.gols = 0
-        this.novoJogo.fora.time = this.teams[indexFora]
-        this.novoJogo.casa.fora = 0
-
+        ],
+        view: 'tabela'
     },
     methods: {
         fimJogo() {
@@ -57,6 +48,21 @@ new Vue({
             let gols = +this.novoJogo.casa.gols //+ convertendo para inteiro
             let golsAdversario = +this.novoJogo.fora.gols
             this.novoJogo.casa.time.fimJogo(timeAdversario, gols, golsAdversario)
+            this.showView('tabela')
+        },
+        criaNovoJogo() {
+            let indexCasa = Math.floor(Math.random() * 20),
+                indexFora = Math.floor(Math.random() * 20)
+
+            this.novoJogo.casa.time = this.teams[indexCasa]
+            this.novoJogo.casa.gols = 0
+            this.novoJogo.fora.time = this.teams[indexFora]
+            this.novoJogo.casa.fora = 0
+
+            this.showView('novo jogo')
+        },
+        showView(view) {
+            this.view = view
         }
     },
     filters: {
