@@ -43,8 +43,7 @@ export default {
     },
     methods: {
         exibeNovoJogo() {
-            event.$emit('show-jogo')
-            event.$emit('get-teams',this.teams)
+            this.$store.commit('show-novo-jogo')
         },
         sortBy(coluna) {
             this.order.keys = coluna

@@ -35,16 +35,19 @@ export default {
             }
         }
     },
+    mounted() {
+        this.criaNovoJogo(this.$store.state.teams)
+    },
     methods: {
         fimJogo() {
             let timeAdversario = this.novoJogo.fora.time
+            let timeCasa = this.novoJogo.casa.time
             let gols = +this.novoJogo.casa.gols //+ convertendo para inteiro
             let golsAdversario = +this.novoJogo.fora.gols
             this.novoJogo.casa.time.fimJogo(timeAdversario, gols, golsAdversario)
-            this.novoJogo.casa.time = null
-            this.novoJogo.casa.gols = 0
-            this.novoJogo.fora.time = null
-            this.novoJogo.fora.gols = 0
+            this.$store.commit('update', timeCasa)
+            this.$store.commit('update', timeAdversario)
+            this.$store.commit('show-team-list')
         },
         criaNovoJogo(teams) {
             let indexCasa = Math.floor(Math.random() * 20),

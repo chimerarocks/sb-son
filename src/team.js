@@ -1,5 +1,6 @@
 export class Team {
-    constructor(nome, escudo) {
+    constructor(id, nome, escudo) {
+        this.id = id
         this.nome = nome;
         this.escudo = escudo;
 

@@ -29,10 +29,5 @@ export default {
             // return store.state.view
             return this.$store.state.view
         }
-    },
-    methods: {
-        showView(view) {
-            this.view = view
-        }
     }
 }
