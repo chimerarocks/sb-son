@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>vue2</title>
+  </head>
+  <body>
+    <div id="app" class="container">
+      <div class="row">
+        <h3>Campeonato Braileiro - Série A - 2016</h3>
+        <br/><br/>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Pontos</th>
+              <th>GM</th>
+              <th>GS</th>
+              <th>Saldo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="o in teams">
+              <td>
+                <img :src="o.escudo" style="heigth: 30px; width: 30px">
+                <strong>{{o.nome}}</strong>
+              </td>
+              <td>{{o.pontos}}</td>
+              <td>{{o.gm}}</td>
+              <td>{{o.gs}}</td>
+              <td>{{saldo}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="/dist/build.js"></script>
+  </body>
+</html>
