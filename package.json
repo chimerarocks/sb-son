@@ -13,7 +13,8 @@
     "jquery": "^3.1.1",
     "lodash": "^4.17.2",
     "url-loader": "^0.5.7",
-    "vue": "^2.1.0"
+    "vue": "^2.1.0",
+    "vuex": "^2.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",

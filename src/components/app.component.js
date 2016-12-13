@@ -1,6 +1,5 @@
 import TeamListComponent from './team-list.component'
 import JogoComponent from './jogo.component'
-import event from '../event'
 
 export default {
     components: {
@@ -20,22 +19,15 @@ export default {
         </div>
     </div>
     `,
-    data(){
-        return {
-            view: 'tabela',
+    computed: {
+        view() {
+            // return store.state.view
+            return this.$store.state.view
         }
     },
     methods: {
         showView(view) {
             this.view = view
         }
-    },
-    mounted() {
-        event.$on('show-tabela', () => {
-            this.showView('tabela')
-        })
-        event.$on('show-jogo', () => {
-            this.showView('novo jogo')
-        })
     }
 }
