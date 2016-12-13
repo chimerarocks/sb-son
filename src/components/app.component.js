@@ -1,8 +1,10 @@
 import TeamListComponent from './team-list.component'
+import JogoComponent from './jogo.component'
 
 export default {
     components: {
-        'time-list': TeamListComponent
+        'time-list': TeamListComponent,
+        'jogo': JogoComponent
     },
     template: `
     <div class="container">
@@ -12,24 +14,7 @@ export default {
                 <time-list></time-list>
             </div>
             <div v-else>
-                <form class="form-inline">
-                    <div class="form-group">
-                        <input type="text" class="form-control" v-model="novoJogo.casa.gols" @keyup.enter="fimJogo">
-                        <label class="control-label">
-                            {{novoJogo.casa.time.nome}}
-                            <img :src="novoJogo.casa.time.escudo" style="height: 30px; width: 30px;">
-                        </label>
-                    </div>
-                    <span>X</span>
-                    <div class="form-group">
-                        <label class="control-label">
-                            <img :src="novoJogo.fora.time.escudo" style="height: 30px; width: 30px;">
-                            {{novoJogo.fora.time.nome}}
-                        </label>
-                        <input type="text" class="form-control" v-model="novoJogo.fora.gols" @keyup.enter="fimJogo">
-                    </div>
-                    <button type="button" class="btn btn-primary" @click="fimJogo">Fim de jogo</button>
-                </form>
+                <jogo></jogo>
             </div>
         </div>
     </div>
