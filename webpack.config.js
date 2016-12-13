@@ -28,9 +28,18 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.(woff|woff2|ttf|svg|eot)$/,
+        loader: 'url-loader',
       }
     ]
   },
+  plugins: [
+      new webpack.ProvidePlugin({
+        'jQuery': 'jquery'
+      })
+  ],
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.common.js'
