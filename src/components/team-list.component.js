@@ -1,5 +1,6 @@
 import {Team} from '../team'
 import _ from 'lodash'
+import event from '../event'
 
 export default {
     template: `
@@ -64,8 +65,8 @@ export default {
     },
     methods: {
         exibeNovoJogo() {
-            this.$parent.showView('novo jogo')
-            this.$parent.$children[1].criaNovoJogo(this.teams)
+            event.$emit('show-jogo')
+            event.$emit('get-teams',this.teams)
         },
         sortBy(coluna) {
             this.order.keys = coluna

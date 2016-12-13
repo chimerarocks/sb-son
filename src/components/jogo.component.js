@@ -1,3 +1,5 @@
+import event from '../event'
+
 export default {
     template: `
     <div>
@@ -35,13 +37,18 @@ export default {
             }
         }
     },
+    mounted() {
+        event.$on('get-teams', teams => {
+            this.criaNovoJogo(teams)
+        })
+    },
     methods: {
         fimJogo() {
             let timeAdversario = this.novoJogo.fora.time
             let gols = +this.novoJogo.casa.gols //+ convertendo para inteiro
             let golsAdversario = +this.novoJogo.fora.gols
             this.novoJogo.casa.time.fimJogo(timeAdversario, gols, golsAdversario)
-            this.$parent.showView('tabela')
+            event.$emit('show-tabela')
             this.novoJogo.casa.time = null
             this.novoJogo.casa.gols = 0
             this.novoJogo.fora.time = null
