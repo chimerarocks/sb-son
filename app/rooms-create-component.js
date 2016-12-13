@@ -12,7 +12,7 @@ define('rooms-create-component',[
         {_id: '006', name: 'Vue.js', description: 'Chat dos caras do data-binding'},
     ]
 
-    module.exports = {
+    return {
         template: `
             <ul>
                 <li v-for="o in rooms">

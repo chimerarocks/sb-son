@@ -2,7 +2,7 @@ define('rooms-component', [
     'blueimp-md5', 'vue', 'vuefire', './firebase-db', 'bootstrap'
 ], function (md5, Vue, VueFire, db) {
     Vue.use(VueFire)
-    module.exports = {
+    return {
         template: `
         <div class="col-md-4" v-for="o in rooms">
             <div class="panel panel-primary">
