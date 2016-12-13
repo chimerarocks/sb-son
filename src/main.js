@@ -7,6 +7,7 @@ require('bootstrap')
 new Vue({
     el: '#app',
     data: {
+        colunas: ['nome', 'pontos', 'gm', 'gs', 'saldo'],
         novoJogo: {
             casa: {
                 time: null,
@@ -56,6 +57,14 @@ new Vue({
             let gols = +this.novoJogo.casa.gols //+ convertendo para inteiro
             let golsAdversario = +this.novoJogo.fora.gols
             this.novoJogo.casa.time.fimJogo(timeAdversario, gols, golsAdversario)
+        }
+    },
+    filters: {
+        saldo(time) {
+            return time.gm - time.gs
+        },
+        ucwords(word) {
+            return word.charAt(0).toUpperCase() + word.slice(1)
         }
     }
 })
