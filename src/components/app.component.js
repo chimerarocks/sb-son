@@ -12,13 +12,17 @@ export default {
     <div class="container">
         <div class="row">
             <h3>Campeonato Braileiro - Série A - 2016</h3>
+            <a class="btn btn-primary" @click.prevent="exibeNovoJogo">Novo Jogo</a>
+            <a class="btn btn-primary" @click.prevent="exibeZona">Zona</a>
+            <a class="btn btn-primary" @click.prevent="exibeTabela">Tabela</a>
+            <br/><br/>
             <div v-show="view == 'tabela'">
                 <time-list></time-list>
             </div>
-            <div v-show="view == 'novo jogo'">
+            <div v-if="view == 'novo jogo'">
                 <jogo></jogo>
             </div>
-            <div v-show="view == 'zona'">
+            <div v-if="view == 'zona'">
                 <team-zone></team-zone>
             </div>
         </div>
@@ -28,6 +32,17 @@ export default {
         view() {
             // return store.state.view
             return this.$store.state.view
+        }
+    },
+    methods: {
+        exibeTabela() {
+            this.$store.commit('show-team-list')
+        },
+        exibeNovoJogo() {
+            this.$store.commit('show-novo-jogo')
+        },
+        exibeZona() {
+            this.$store.commit('show-teams-zone')
         }
     }
 }
