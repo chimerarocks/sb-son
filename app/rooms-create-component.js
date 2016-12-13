@@ -1,3 +1,9 @@
+var db = require('./firebase-db')
+var Vue = require('vue')
+var VueFire = require('vuefire')
+
+Vue.use(VueFire)
+
 var rooms = [
     {_id: '001', name: 'PHP', description: 'Entusiasta do PHP'},
     {_id: '002', name: 'Java', description: 'Developer experts'},
@@ -6,8 +12,6 @@ var rooms = [
     {_id: '005', name: 'Javascript', description: 'Olha a web aí!'},
     {_id: '006', name: 'Vue.js', description: 'Chat dos caras do data-binding'},
 ]
-
-var db = require('./firebase-db')
 
 module.exports = {
     template: `

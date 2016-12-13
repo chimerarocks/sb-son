@@ -44,15 +44,13 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var db = __webpack_require__(16)
 	var Vue = __webpack_require__(24)
 	var VueRouter = __webpack_require__(26)
-	var VueFire = __webpack_require__(27)
 
 	Vue.use(VueRouter)
-	Vue.use(VueFire)
 
 	var appComponent = Vue.extend({})
+
 	var router = new VueRouter()
 
 	router.map({
@@ -26797,6 +26795,12 @@
 /* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var db = __webpack_require__(16)
+	var Vue = __webpack_require__(24)
+	var VueFire = __webpack_require__(27)
+
+	Vue.use(VueFire)
+
 	var rooms = [
 	    {_id: '001', name: 'PHP', description: 'Entusiasta do PHP'},
 	    {_id: '002', name: 'Java', description: 'Developer experts'},
@@ -26805,8 +26809,6 @@
 	    {_id: '005', name: 'Javascript', description: 'Olha a web aí!'},
 	    {_id: '006', name: 'Vue.js', description: 'Chat dos caras do data-binding'},
 	]
-
-	var db = __webpack_require__(16)
 
 	module.exports = {
 	    template: `
@@ -26840,7 +26842,11 @@
 	__webpack_require__(1)
 	__webpack_require__(3)
 	var md5 = __webpack_require__(23)
+	var Vue = __webpack_require__(24)
+	var VueFire = __webpack_require__(27)
 	var db = __webpack_require__(16)
+
+	Vue.use(VueFire)
 
 	module.exports = {
 	    template: `
@@ -26915,6 +26921,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var db = __webpack_require__(16)
+	var Vue = __webpack_require__(24)
+	var VueFire = __webpack_require__(27)
+
+	Vue.use(VueFire)
 
 	module.exports = {
 	    template: `
