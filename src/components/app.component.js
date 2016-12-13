@@ -1,10 +1,12 @@
 import TeamListComponent from './team-list.component'
 import JogoComponent from './jogo.component'
+import TeamZoneComponent from './team-zone.component'
 
 export default {
     components: {
         'time-list': TeamListComponent,
-        'jogo': JogoComponent
+        'jogo': JogoComponent,
+        'team-zone': TeamZoneComponent
     },
     template: `
     <div class="container">
@@ -15,6 +17,9 @@ export default {
             </div>
             <div v-show="view == 'novo jogo'">
                 <jogo></jogo>
+            </div>
+            <div v-show="view == 'zona'">
+                <team-zone></team-zone>
             </div>
         </div>
     </div>

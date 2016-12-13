@@ -5,7 +5,7 @@ import {Team} from './team'
 Vue.use(Vuex)
 
 const state = {
-    view: 'tabela',
+    view: 'zona',
     teams: [
         new Team('Palmeiras', require('./assets/palmeiras_60x60.png')),
         new Team('Flamengo', require('./assets/flamengo_60x60.png')),
@@ -31,5 +31,9 @@ const state = {
 }
 
 export default new Vuex.Store({
-    state
+    state,
+    getters: {
+        teamsLibertadores: state => state.teams.slice(0,6),
+        teamsRebaixados: state => state.teams.slice(16,20)
+    }
 })
