@@ -45,7 +45,8 @@ new Vue({
             new Team('Santa Cruz', require('./assets/santa_cruz_60x60.png')),
             new Team('América-MG', require('./assets/america_mg_60x60.png'))
         ],
-        view: 'tabela'
+        view: 'tabela',
+        filter: ''
     },
     methods: {
         fimJogo() {
@@ -80,7 +81,11 @@ new Vue({
     },
     computed: {
         teamsOrdered() {
-            return _.orderBy(this.teams, this.order.keys, this.order.sort)
+            let colecao = _.orderBy(this.teams, this.order.keys, this.order.sort)
+
+            return _.filter(colecao, item => {
+                return item.nome.indexOf(this.filter) > -1
+            })
         }
     },
     filters: {

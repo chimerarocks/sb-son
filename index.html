@@ -11,6 +11,7 @@
         <a class="btn btn-primary" @click.prevent="criaNovoJogo">Novo Jogo</a>
         <br/><br/>
         <div v-if="view == 'tabela'">
+            <input type="text" class="form-control" v-model="filter">
           <table class="table table-striped">
             <thead>
               <tr>
