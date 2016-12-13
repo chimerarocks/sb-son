@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import {Team} from './team'
 import _ from 'lodash'
+import './filters'
 
 require('style-loader!css-loader!bootstrap/dist/css/bootstrap.min.css')
 require('bootstrap')
@@ -141,14 +142,6 @@ let appComponent = Vue.extend({
             return _.filter(colecao, item => {
                 return item.nome.indexOf(this.filter) > -1
             })
-        }
-    },
-    filters: {
-        saldo(time) {
-            return time.gm - time.gs
-        },
-        ucwords(word) {
-            return word.charAt(0).toUpperCase() + word.slice(1)
         }
     }
 })
