@@ -4,6 +4,8 @@ import ChatComponent from './chat-component'
 import RoomsComponent from './rooms-component'
 import RoomsCreateComponent from './rooms-create-component'
 
+require('style-loader!css-loader!../node_modules/bootstrap/dist/css/bootstrap.min.css')
+
 Vue.use(VueRouter)
 
 var appComponent = Vue.extend({})
