@@ -1,4 +1,6 @@
-require(['vue', 'vue-router'], function(Vue, VueRouter) {
+require([
+    'vue', 'vue-router', './rooms-component', './rooms-create-component'
+], function(Vue, VueRouter, RoomsComponent, RoomsCreateComponent) {
     Vue.use(VueRouter)
 
     var appComponent = Vue.extend({})
@@ -10,10 +12,10 @@ require(['vue', 'vue-router'], function(Vue, VueRouter) {
             component: require('./chat-component')
         },
         '/rooms': {
-            component: require('./rooms-component')
+            component: RoomsComponent
         },
         '/rooms-create': {
-            component: require('./rooms-create-component')
+            component: RoomsCreateComponent
         }
     })
 
