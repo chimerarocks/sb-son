@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import {Team} from './team'
+import _ from 'lodash'
 
 require('style-loader!css-loader!bootstrap/dist/css/bootstrap.min.css')
 require('bootstrap')
@@ -7,6 +8,10 @@ require('bootstrap')
 new Vue({
     el: '#app',
     data: {
+        order: {
+            keys: ['pontos', 'gm', 'gs'],
+            sort: ['desc', 'desc', 'asc']
+        },
         colunas: ['nome', 'pontos', 'gm', 'gs', 'saldo'],
         novoJogo: {
             casa: {
@@ -49,6 +54,10 @@ new Vue({
             let golsAdversario = +this.novoJogo.fora.gols
             this.novoJogo.casa.time.fimJogo(timeAdversario, gols, golsAdversario)
             this.showView('tabela')
+            this.novoJogo.casa.time = null
+            this.novoJogo.casa.gols = 0
+            this.novoJogo.fora.time = null
+            this.novoJogo.fora.gols = 0
         },
         criaNovoJogo() {
             let indexCasa = Math.floor(Math.random() * 20),
@@ -57,12 +66,21 @@ new Vue({
             this.novoJogo.casa.time = this.teams[indexCasa]
             this.novoJogo.casa.gols = 0
             this.novoJogo.fora.time = this.teams[indexFora]
-            this.novoJogo.casa.fora = 0
+            this.novoJogo.fora.gols = 0
 
             this.showView('novo jogo')
         },
         showView(view) {
             this.view = view
+        },
+        sortBy(coluna) {
+            this.order.keys = coluna
+            this.order.sort = this.order.sort == 'desc' ? 'asc' : 'desc'
+        }
+    },
+    computed: {
+        teamsOrdered() {
+            return _.orderBy(this.teams, this.order.keys, this.order.sort)
         }
     },
     filters: {

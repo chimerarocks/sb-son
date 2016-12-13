@@ -14,11 +14,13 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th v-for="o in colunas">{{ o | ucwords}}</th>
+                <th v-for="o in colunas">
+                  <a href="#" @click.prevent="sortBy(o)">{{ o | ucwords}}</a>
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="o in teams">
+              <tr v-for="o in teamsOrdered">
                 <td>
                   <img :src="o.escudo" style="heigth: 30px; width: 30px">
                   <strong>{{o.nome}}</strong>
