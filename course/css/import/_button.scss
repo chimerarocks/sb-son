@@ -3,11 +3,12 @@
 $btn_color_default: #fff;
 $btn_color_blue: #4096ff;
 $btn_color_orange: #ffb611;
+$btn_color_green: green;
 @function btnColor($color) {
   @return darken($color, 20%)
 }
 
-.btn-default {
+@mixin newButton($color) {
   padding: 10px 16px;
   font-size: 14px;
   text-align: center;
@@ -15,38 +16,24 @@ $btn_color_orange: #ffb611;
   border: 1px solid #ccc;
   border-radius: percentage(20/100);
   color: #535353;
-  background-color: $btn_color_default;
+  background-color: $color;
   &:hover {
-    background-color: btnColor($btn_color_blue);
+    background-color: btnColor($color);
   }
+}
+
+.btn-default {
+  @include newButton($btn_color_default)
 }
 
 .btn-blue {
-  @extend .btn-default;
-  $btn_color_blue: blue !default;
-  border: 1px solid $btn_color_blue;
-  color: #fff;
-  background-color: $btn_color_blue;
+  @include newButton($btn_color_blue);
 }
 
 .btn-orange {
-  @extend .btn-default;
-  $btn_color_orange: orange !default;
-  border: 1px solid $btn_color_orange;
-  color: #fff;
-  background-color: $btn_color_orange;
-  &:hover {
-    background-color: saturate($btn_color_orange, 60%);
-  }
+  @include newButton($btn_color_orange);
 }
 
 .btn-green {
-  @extend .btn-default;
-  $btn_color_green: green !default;
-  border: 1px solid $btn_color_green;
-  color: #fff;
-  background-color: $btn_color_green;
-  &:hover {
-    background-color: btnColor($btn_color_green);
-  }
+  @include newButton($btn_color_green);
 }
