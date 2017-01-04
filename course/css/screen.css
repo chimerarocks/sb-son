@@ -254,3 +254,50 @@ main section h1 {
   background-image: -webkit-radial-gradient(45px 45px, #172c94 10px, #7f88ff 30px);
   background-image: radial-gradient(45px 45px, #172c94 10px, #7f88ff 30px);
 }
+
+/* line 110, ../sass/screen.scss */
+.test-animate {
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  -moz-animation: animation-test 10s infinite;
+  -webkit-animation: animation-test 10s infinite;
+  animation: animation-test 10s infinite;
+}
+
+@-moz-keyframes animation-test {
+  0% {
+    background-color: blue;
+  }
+  50% {
+    background-color: red;
+  }
+  100% {
+    background-color: orange;
+  }
+}
+@-webkit-keyframes animation-test {
+  0% {
+    background-color: blue;
+  }
+  50% {
+    background-color: red;
+  }
+  100% {
+    background-color: orange;
+  }
+}
+@keyframes animation-test {
+  0% {
+    background-color: blue;
+  }
+  50% {
+    background-color: red;
+  }
+  100% {
+    background-color: orange;
+  }
+}
