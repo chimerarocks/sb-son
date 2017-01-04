@@ -18,7 +18,7 @@ header {
           color: red; }
 
 /** _button.scss */
-.btn-default, .btn-blue, .btn-orange {
+.btn-default, .btn-blue, .btn-orange, .btn-green {
   padding: 10px 16px;
   font-size: 14px;
   text-align: center;
@@ -27,8 +27,8 @@ header {
   border-radius: 20%;
   color: #535353;
   background-color: #fff; }
-  .btn-default:hover, .btn-blue:hover, .btn-orange:hover {
-    background-color: #004ba6; }
+  .btn-default:hover, .btn-blue:hover, .btn-orange:hover, .btn-green:hover {
+    background-color: #0062d9; }
 
 .btn-blue {
   border: 1px solid #4096ff;
@@ -41,5 +41,12 @@ header {
   background-color: #ffb611; }
   .btn-orange:hover {
     background-color: #ffb611; }
+
+.btn-green {
+  border: 1px solid green;
+  color: #fff;
+  background-color: green; }
+  .btn-green:hover {
+    background-color: #001a00; }
 
 /*# sourceMappingURL=style.css.map */

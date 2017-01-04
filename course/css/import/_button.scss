@@ -3,6 +3,9 @@
 $btn_color_default: #fff;
 $btn_color_blue: #4096ff;
 $btn_color_orange: #ffb611;
+@function btnColor($color) {
+  @return darken($color, 20%)
+}
 
 .btn-default {
   padding: 10px 16px;
@@ -14,7 +17,7 @@ $btn_color_orange: #ffb611;
   color: #535353;
   background-color: $btn_color_default;
   &:hover {
-    background-color: darken($btn_color_blue, 30%);
+    background-color: btnColor($btn_color_blue);
   }
 }
 
@@ -34,5 +37,16 @@ $btn_color_orange: #ffb611;
   background-color: $btn_color_orange;
   &:hover {
     background-color: saturate($btn_color_orange, 60%);
+  }
+}
+
+.btn-green {
+  @extend .btn-default;
+  $btn_color_green: green !default;
+  border: 1px solid $btn_color_green;
+  color: #fff;
+  background-color: $btn_color_green;
+  &:hover {
+    background-color: btnColor($btn_color_green);
   }
 }
