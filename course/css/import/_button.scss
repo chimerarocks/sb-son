@@ -1,5 +1,8 @@
 /** _button.scss */
 
+$btn_color_default: #fff;
+$btn_color_blue: #4096ff;
+
 .btn-default {
   padding: 10px 16px;
   font-size: 14px;
@@ -8,7 +11,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   color: #535353;
-  background-color: #fff;
+  background-color: $btn_color_default;
   &:hover {
     opacity: 0.7;
   }
@@ -16,7 +19,8 @@
 
 .btn-blue {
   @extend .btn-default;
-  border: 1px solid #4096ff;
+  $btn_color_blue: blue !default;
+  border: 1px solid $btn_color_blue;
   color: #fff;
-  background-color: #4096ff;
+  background-color: $btn_color_blue;
 }
