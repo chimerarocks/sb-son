@@ -76,7 +76,7 @@ main section h1 {
   margin: 30px;
   background: $color;
   background-image: image-url($image);
-  background-size: cover;
+  @include background-size(cover);
 }
 
 .block-center {
@@ -93,4 +93,16 @@ main section h1 {
 
 .team-green {
   @include team(green, 'team3.png')
+}
+
+.gradient-example {
+  @include inline-block;
+  width: 80px;
+  height: 80px;
+  background-color: red;
+  margin: 1em 1em 0 0;
+}
+
+#radial-gradient {
+  @include background-image(radial-gradient(45px 45px, #172c94 10px, #7f88ff 30px))
 }

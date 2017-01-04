@@ -179,6 +179,9 @@ main section h1 {
   margin: 30px;
   background: blue;
   background-image: url('../img/team1.png?1483528966');
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
   background-size: cover;
 }
 
@@ -200,6 +203,9 @@ main section h1 {
   margin: 30px;
   background: orange;
   background-image: url('../img/team2.png?1483528948');
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
   background-size: cover;
 }
 
@@ -221,5 +227,30 @@ main section h1 {
   margin: 30px;
   background: green;
   background-image: url('../img/team3.png?1483528925');
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
   background-size: cover;
+}
+
+/* line 98, ../sass/screen.scss */
+.gradient-example {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  width: 80px;
+  height: 80px;
+  background-color: red;
+  margin: 1em 1em 0 0;
+}
+
+/* line 106, ../sass/screen.scss */
+#radial-gradient {
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjQ1cHgiIGN5PSI0NXB4IiByPSIzMCUiPjxzdG9wIG9mZnNldD0iMzMuMzMzMzMlIiBzdG9wLWNvbG9yPSIjMTcyYzk0Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjN2Y4OGZmIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background-size: 100%;
+  background-image: -moz-radial-gradient(45px 45px, #172c94 10px, #7f88ff 30px);
+  background-image: -webkit-radial-gradient(45px 45px, #172c94 10px, #7f88ff 30px);
+  background-image: radial-gradient(45px 45px, #172c94 10px, #7f88ff 30px);
 }
