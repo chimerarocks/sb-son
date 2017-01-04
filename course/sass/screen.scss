@@ -4,3 +4,34 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 @import "compass/reset";
+@import "compass/css3";
+
+@mixin mixin-nav-bar($backColor, $textColor, $titleSize, $descSize) {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  background-color: $backColor;
+  margin-bottom: 20px;
+  border: 1px solid $backColor;
+  color: $textColor;
+  @include box-shadow(#b5b5b5 0px 5px 10px);
+  h1 {
+    margin: 0;
+    font-size: $titleSize;
+  }
+  p {
+    margin: 5px;
+    font-size: $descSize;
+  }
+}
+
+.nav {
+  @include mixin-nav-bar(blue, #fff, 55px, 18px);
+}
+
+main section h1 {
+  @include text-shadow(#b5b5b5 0px 4px 8px);
+  font-size: 50px;
+  text-align: center;
+  color: #d0d0d0;
+}
