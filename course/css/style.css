@@ -1,3 +1,4 @@
+/** _main.scss */
 header {
   padding: 20px; }
   header h1 {
@@ -16,6 +17,7 @@ header {
         header ul li a:hover {
           color: red; }
 
+/** _button.scss */
 .btn-default, .btn-blue {
   padding: 10px 16px;
   font-size: 14px;
