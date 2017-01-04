@@ -67,7 +67,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/* line 28, ../sass/screen.scss */
+/* line 30, ../sass/screen.scss */
 .nav {
   width: 100%;
   height: 80px;
@@ -80,21 +80,83 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-box-shadow: #b5b5b5 0px 5px 10px;
   box-shadow: #b5b5b5 0px 5px 10px;
 }
-/* line 18, ../sass/screen.scss */
+/* line 20, ../sass/screen.scss */
 .nav h1 {
   margin: 0;
   font-size: 55px;
 }
-/* line 22, ../sass/screen.scss */
+/* line 24, ../sass/screen.scss */
 .nav p {
   margin: 5px;
   font-size: 18px;
 }
 
-/* line 32, ../sass/screen.scss */
+/* line 34, ../sass/screen.scss */
 main section h1 {
   text-shadow: #b5b5b5 0px 4px 8px;
   font-size: 50px;
   text-align: center;
   color: #d0d0d0;
+}
+
+/* line 51, ../sass/screen.scss */
+.block-team {
+  text-align: center;
+}
+
+/* line 55, ../sass/screen.scss */
+.team-blue {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  -moz-box-shadow: #b5b5b5 0px 4px 8px;
+  -webkit-box-shadow: #b5b5b5 0px 4px 8px;
+  box-shadow: #b5b5b5 0px 4px 8px;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  width: 200px;
+  height: 200px;
+  margin: 30px;
+  background: blue;
+}
+
+/* line 59, ../sass/screen.scss */
+.team-orange {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  -moz-box-shadow: #b5b5b5 0px 4px 8px;
+  -webkit-box-shadow: #b5b5b5 0px 4px 8px;
+  box-shadow: #b5b5b5 0px 4px 8px;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  width: 200px;
+  height: 200px;
+  margin: 30px;
+  background: orange;
+}
+
+/* line 63, ../sass/screen.scss */
+.team-green {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  -moz-box-shadow: #b5b5b5 0px 4px 8px;
+  -webkit-box-shadow: #b5b5b5 0px 4px 8px;
+  box-shadow: #b5b5b5 0px 4px 8px;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  width: 200px;
+  height: 200px;
+  margin: 30px;
+  background: green;
 }
