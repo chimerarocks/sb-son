@@ -22,3 +22,24 @@ header {
     }
   }
 }
+
+.btn-default {
+  padding: 10px 16px;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #535353;
+  background-color: #fff;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.btn-blue {
+  @extend .btn-default;
+  border: 1px solid #4096ff;
+  color: #fff;
+  background-color: #4096ff;
+}
