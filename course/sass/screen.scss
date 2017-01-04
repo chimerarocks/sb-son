@@ -38,7 +38,7 @@ main section h1 {
   color: #d0d0d0;
 }
 
-@mixin team($color) {
+@mixin team($color, $image) {
   @include inline-block;
   @include box-shadow(#b5b5b5 0px 4px 8px);
   @include border-radius;
@@ -46,6 +46,8 @@ main section h1 {
   height: 200px;
   margin: 30px;
   background: $color;
+  background-image: image-url($image);
+  background-size: cover;
 }
 
 .block-team {
@@ -53,13 +55,13 @@ main section h1 {
 }
 
 .team-blue {
-  @include team(blue)
+  @include team(blue, 'team1.png')
 }
 
 .team-orange {
-  @include team(orange)
+  @include team(orange, 'team2.png')
 }
 
 .team-green {
-  @include team(green)
+  @include team(green, 'team3.png')
 }

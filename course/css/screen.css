@@ -99,12 +99,12 @@ main section h1 {
   color: #d0d0d0;
 }
 
-/* line 51, ../sass/screen.scss */
+/* line 53, ../sass/screen.scss */
 .block-team {
   text-align: center;
 }
 
-/* line 55, ../sass/screen.scss */
+/* line 57, ../sass/screen.scss */
 .team-blue {
   display: inline-block;
   vertical-align: middle;
@@ -121,9 +121,11 @@ main section h1 {
   height: 200px;
   margin: 30px;
   background: blue;
+  background-image: url('../img/team1.png?1483528966');
+  background-size: cover;
 }
 
-/* line 59, ../sass/screen.scss */
+/* line 61, ../sass/screen.scss */
 .team-orange {
   display: inline-block;
   vertical-align: middle;
@@ -140,9 +142,11 @@ main section h1 {
   height: 200px;
   margin: 30px;
   background: orange;
+  background-image: url('../img/team2.png?1483528948');
+  background-size: cover;
 }
 
-/* line 63, ../sass/screen.scss */
+/* line 65, ../sass/screen.scss */
 .team-green {
   display: inline-block;
   vertical-align: middle;
@@ -159,4 +163,6 @@ main section h1 {
   height: 200px;
   margin: 30px;
   background: green;
+  background-image: url('../img/team3.png?1483528925');
+  background-size: cover;
 }
