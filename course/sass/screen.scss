@@ -5,6 +5,35 @@
 
 @import "compass/reset";
 @import "compass/css3";
+@import "compass/utilities/sprites";
+
+@import "social/*.png";
+//@include all-social-sprites;
+
+.facebook {
+  @include social-sprite(facebook);
+}
+
+.github {
+  @include social-sprite(github);
+}
+
+.plus {
+  @include social-sprite(plus);
+}
+
+.twitter {
+  @include social-sprite(twitter);
+}
+
+ul.social-links li {
+  @include inline-block;
+  a {
+    display: block;
+    width: 60px;
+    height: 60px;
+  }
+}
 
 $default-border-radius: 100%;
 
@@ -50,7 +79,7 @@ main section h1 {
   background-size: cover;
 }
 
-.block-team {
+.block-center {
   text-align: center;
 }
 
