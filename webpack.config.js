@@ -5,7 +5,7 @@ var inlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 module.exports = {
   entry: {
     app: './index.js',
-    vendor: ['jquery']
+    vendor: ['jquery', 'bootstrap']
   },
   output: {
     /**
@@ -25,6 +25,12 @@ module.exports = {
     }),
     new inlineManifestWebpackPlugin({
       name: 'webpackManifest'
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap:true
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minime: true
     })
   ]
 }

@@ -1,13 +1,1 @@
-webpackJsonp([1,2],[
-/* 0 */,
-/* 1 */
-/***/ function(module, exports, __webpack_require__) {
-
-$ = __webpack_require__(0)
-
-$(document).ready(function(){
-  $('input').val('Jquery funcionando')
-})
-
-/***/ }
-],[1]);
+webpackJsonp([1,2],[,function(n,o,u){$=u(0),$(document).ready(function(){$("input").val("Jquery funcionando")})}],[1]);

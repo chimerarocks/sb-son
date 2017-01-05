@@ -1,5 +1,5 @@
 $ = require('jquery')
 
 $(document).ready(function(){
-  $('input').val('Jquery funcionando')
+  $('input').val('Jquery funcionando - de novo')
 })
