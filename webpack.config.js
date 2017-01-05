@@ -48,6 +48,14 @@ module.exports = {
         query: {
           presets: [['es2015', {modules: false}]]
         }
+      },
+      {
+        test: /\.less$/,
+        loaders: ['style-loader','css-loader', 'less-loader']
+      },
+      {
+        test: /\.(woff|woff2|ttf|svg|eot)$/,
+        loader: 'url-loader'
       }
     ]
   },
@@ -58,5 +66,9 @@ module.exports = {
   watchOptions: {
     aggregateTimeout: 300,
     ignored: /node_modules/
-  }
+  },
+  performance: {
+    hints: false
+  },
+  devtool: 'source-map'
 }
