@@ -1,4 +1,6 @@
 var webpack = require('webpack')
+var htmlWebpackPlugin = require('html-webpack-plugin')
+var inlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -17,6 +19,12 @@ module.exports = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest']
+    }),
+    new htmlWebpackPlugin({
+      template: './index.ejs'
+    }),
+    new inlineManifestWebpackPlugin({
+      name: 'webpackManifest'
     })
   ]
 }
