@@ -36,5 +36,17 @@ module.exports = {
       '$': 'jquery',
       'jQuery': 'jquery'
     })
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015']
+        }
+      }
+    ]
+  }
 }

@@ -1,1 +1,0 @@
-webpackJsonp([1,2],[,function(n,o,u){$=u(0),$(document).ready(function(){$("input").val("Jquery funcionando")})}],[1]);
