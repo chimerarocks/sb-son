@@ -1,7 +1,10 @@
 module.exports = {
-  entry: './index.js',
+  entry: {
+    app: './index.js',
+    vendor: ['jquery']
+  },
   output: {
-    filename: '[hash].bundle.js',
+    filename: '[name][hash].bundle.js',
     path: './dist'
   }
 }
