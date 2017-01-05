@@ -1,6 +1,8 @@
 var webpack = require('webpack')
 var htmlWebpackPlugin = require('html-webpack-plugin')
 var inlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
+var path = require('path')
+
 
 module.exports = {
   entry: {
@@ -14,7 +16,7 @@ module.exports = {
      */
     // filename: '[name][hash].bundle.js',
     filename: '[name][chunkhash].bundle.js',
-    path: './dist'
+    path: path.join(__dirname, 'dist')
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
@@ -48,5 +50,13 @@ module.exports = {
         }
       }
     ]
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    port: 8080
+  },
+  watchOptions: {
+    aggregateTimeout: 300,
+    ignored: /node_modules/
   }
 }

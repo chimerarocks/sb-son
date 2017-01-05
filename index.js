@@ -6,5 +6,5 @@ System.import('./test').then(module => {
 })
 
 $(document).ready(() => {
-  $('input').val('Jquery funcionando - de novo')
+  $('input').val('Jquery funcionando')
 })
