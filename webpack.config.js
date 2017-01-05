@@ -4,7 +4,12 @@ module.exports = {
     vendor: ['jquery']
   },
   output: {
-    filename: '[name][hash].bundle.js',
+    /**
+     * hash = id da compilação do pacote
+     * chunkhash = id da compilação do módulo
+     */
+    // filename: '[name][hash].bundle.js',
+    filename: '[name][chunkhash].bundle.js',
     path: './dist'
   }
 }
