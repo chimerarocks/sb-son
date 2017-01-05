@@ -31,6 +31,10 @@ module.exports = {
     }),
     new webpack.LoaderOptionsPlugin({
       minime: true
+    }),
+    new webpack.ProvidePlugin({
+      '$': 'jquery',
+      'jQuery': 'jquery'
     })
   ]
 }
