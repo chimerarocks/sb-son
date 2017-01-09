@@ -8,7 +8,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  * Interface BillPayRepository
  * @package namespace CHROCKS\Repositories;
  */
-interface BillPayRepository extends RepositoryInterface
+interface BillPayRepository extends RepositoryInterface, RepositoryMultitenancyInterface
 {
     //
 }

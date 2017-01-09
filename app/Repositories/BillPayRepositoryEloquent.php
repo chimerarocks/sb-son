@@ -2,6 +2,7 @@
 
 namespace CHROCKS\Repositories;
 
+use CHROCKS\Models\Category;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use CHROCKS\Repositories\BillPayRepository;
@@ -32,5 +33,10 @@ class BillPayRepositoryEloquent extends BaseRepository implements BillPayReposit
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    public function applyMultitenancy()
+    {
+        BillPay::clearBootedModels();
     }
 }
