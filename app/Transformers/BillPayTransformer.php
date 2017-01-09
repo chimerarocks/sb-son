@@ -22,7 +22,10 @@ class BillPayTransformer extends TransformerAbstract
     {
         return [
             'id'         => (int) $model->id,
-
+            'name'       => $model->name,
+            'date_due'   => $model->date_due,
+            'value'      => (float) $model->value,
+            'done'       => (bool) $model->done,
             /* place your other model properties here */
 
             'created_at' => $model->created_at,

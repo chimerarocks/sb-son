@@ -2,6 +2,7 @@
 
 namespace CHROCKS\Repositories;
 
+use CHROCKS\Presenters\CategoryPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use CHROCKS\Models\Category;
@@ -35,5 +36,10 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
     public function applyMultitenancy()
     {
         Category::clearBootedModels();
+    }
+
+    public function presenter()
+    {
+        return CategoryPresenter::class;
     }
 }
