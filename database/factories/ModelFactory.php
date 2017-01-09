@@ -25,7 +25,8 @@ $factory->define(CHROCKS\Models\User::class, function (Faker\Generator $faker) {
 
 $factory->define(CHROCKS\Models\Category::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name
+        'name' => $faker->name,
+        'user_id' => rand(1,21)
     ];
 });
 
@@ -35,6 +36,7 @@ $factory->define(CHROCKS\Models\BillPay::class, function (Faker\Generator $faker
         'date_due' => $faker->date(),
         'value' => $faker->randomFloat(2,100,100),
         'done' => (bool) rand(0,1),
-        'category_id' => rand(1,50)
+        'category_id' => rand(1,50),
+        'user_id' => rand(1,21)
     ];
 });
