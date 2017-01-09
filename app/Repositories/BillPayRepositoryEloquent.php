@@ -26,8 +26,6 @@ class BillPayRepositoryEloquent extends BaseRepository implements BillPayReposit
         return BillPay::class;
     }
 
-    
-
     /**
      * Boot up the repository, pushing criteria
      */
@@ -44,5 +42,26 @@ class BillPayRepositoryEloquent extends BaseRepository implements BillPayReposit
     public function presenter()
     {
         return BillPayPresenter::class;
+    }
+
+    public function calculateTotal()
+    {
+        $result = [
+            'count' => 0,
+            'count_paid' => 0,
+            'total_to_be_paid' => 0
+        ];
+        $billPays = $this->skipPresenter()->all();
+        $result['count'] = $billPays->count();
+        foreach($billPays->toArray() as $billPay) {
+            $done = (bool) $billPay['done'];
+            if ($done) {
+                $result['count_paid']++;
+            } else {
+                $value = (float) $billPay->value;
+                $result['total_to_be_paid'] += $value;
+            }
+        }
+        return $result;
     }
 }

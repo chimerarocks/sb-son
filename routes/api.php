@@ -25,5 +25,6 @@ Route::post('users', 'Api\UsersController@store');
 Route::group(['middleware' => ['jwt.auth','tenant']], function() {
     Route::post('logout', 'Api\AuthController@logout');
     Route::resource('categories', 'Api\CategoriesController', ['except' => 'edit', 'create']);
+    Route::get('bill_pays/total', 'Api\BillPaysController@calculateTotal');
     Route::resource('bill_pays', 'Api\BillPaysController', ['except' => 'edit', 'create']);
 });
