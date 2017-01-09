@@ -25,6 +25,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(\CHROCKS\Repositories\CategoryRepository::class, \CHROCKS\Repositories\CategoryRepositoryEloquent::class);
         $this->app->bind(\CHROCKS\Repositories\BillPayRepository::class, \CHROCKS\Repositories\BillPayRepositoryEloquent::class);
+        $this->app->bind(\CHROCKS\Repositories\UserRepository::class, \CHROCKS\Repositories\UserRepositoryEloquent::class);
         //:end-bindings:
     }
 }
