@@ -11,9 +11,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\CHROCKS\User::class)->create([
+        factory(\CHROCKS\Models\User::class)->create([
             'email' => 'admin@user.com',
         ]);
-        factory(\CHROCKS\User::class, 20)->create();
+        factory(\CHROCKS\Models\User::class, 20)->create();
     }
 }

@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => CHROCKS\User::class,
+            'model' => CHROCKS\Models\User::class,
         ],
 
         // 'users' => [
