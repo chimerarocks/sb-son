@@ -24,6 +24,7 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(\CHROCKS\Repositories\CategoryRepository::class, \CHROCKS\Repositories\CategoryRepositoryEloquent::class);
+        $this->app->bind(\CHROCKS\Repositories\BillPayRepository::class, \CHROCKS\Repositories\BillPayRepositoryEloquent::class);
         //:end-bindings:
     }
 }
