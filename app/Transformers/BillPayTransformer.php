@@ -2,6 +2,7 @@
 
 namespace CHROCKS\Transformers;
 
+use CHROCKS\Models\Category;
 use League\Fractal\TransformerAbstract;
 use CHROCKS\Models\BillPay;
 
@@ -11,6 +12,7 @@ use CHROCKS\Models\BillPay;
  */
 class BillPayTransformer extends TransformerAbstract
 {
+    protected $defaultIncludes = ['category'];
 
     /**
      * Transform the \BillPay entity
@@ -31,5 +33,10 @@ class BillPayTransformer extends TransformerAbstract
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at
         ];
+    }
+
+    public function includeCategory(BillPay $model)
+    {
+        return $this->item($model->category(), new CategoryTransformer());
     }
 }
