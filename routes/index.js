@@ -26,9 +26,14 @@ router.get('/', function(req, res, next) {
   			var item = el;
   			var headerTitle = $(item).find('.genpost-entry-header > .genpost-entry-title > a');
   			var content 	= $(item).find('.genpost-entry-content > p');
+  			var moreTag		= $(content).find('a');
 
   			return arr.push({
-  				header: $(headerTitle).text()
+  				header: $(headerTitle).text(),
+  				content: {
+  					text: $(content).text(),
+  					more: $(moreTag).attr('href')
+  				}
   			});
   		})
 
