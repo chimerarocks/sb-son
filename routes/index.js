@@ -17,7 +17,23 @@ router.get('/', function(req, res, next) {
 
   	var $ = cheerio.load(body);
 
-  	res.end($('.genaral-post-item').toString())
+  	var arr = [];
+
+  	var postItem = $('.genaral-post-item');
+
+  	$(postItem)
+  		.each(function(key, el) {
+  			var item = el;
+  			var headerTitle = $(item).find('.genpost-entry-header > .genpost-entry-title > a');
+  			var content 	= $(item).find('.genpost-entry-content > p');
+
+  			return arr.push({
+  				header: $(headerTitle).text()
+  			});
+  		})
+
+  	res.status(200)
+  		.json(arr);
   })
 });
 
