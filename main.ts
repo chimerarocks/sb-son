@@ -1,33 +1,41 @@
-function getHello(name:string){
-    return 'Hello ' + name;
+var test:boolean = true;
+var id:number = 2;
+
+//
+
+var decimal:number = 5.5;
+var hex:number = 0xf00d;
+var bin:number = 0b1010;
+var oct:number = 0o744;
+
+//
+
+var name: string = 'Joao';
+var car: string = "Gol";
+var text: string = `
+    Name: ${name}
+`
+
+//
+
+var fruits:string[] = ['joao'];
+var fruits:Array<string> = ['joao'];
+
+//
+
+enum Color {Red, Green, Blue} //0,1,2
+enum Color1 {Red= 1, Green, Blue} //1,2,3
+
+Color[1] // Red
+Color.Red // 1
+
+//
+
+var list:any = 23;
+list = "string"
+
+//
+
+function printNumber(num:number):void {
+    alert(num)
 }
-
-//var name = 45;
-var name = "Guilherme";
-
-document.body.innerHTML = getHello(name);
-
-interface iCar{
-    brand:string;
-    name:string;
-    power:number;
-}
-
-class Car{
-    brand:string;
-    name:string;
-    //age:number;
-    power:number;
-}
-
-var getCar = function(car:iCar){
-    console.log(car.brand,car.name,car.power);
-};
-
-var Camaro = new Car();
-Camaro.brand = "Chevrolet";
-//Camaro.age = 2016;
-Camaro.name = "Camaro";
-Camaro.power = 45;
-
-getCar(Camaro);
