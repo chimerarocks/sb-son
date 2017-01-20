@@ -1,5 +1,9 @@
-///<reference path="Car"/>
+///<reference path="Color.ts"/>
 
-var porsche = new Car("Porsche", "red", 55)
+module ColorModule {
+    var red = new Color();
+    red.name = 'red'
+    red.code = 'ff1234'
 
-porsche.getCar()
+    console.log(red.getColor())
+}
