@@ -1,34 +1,51 @@
-interface ITypeFunc {
-    (a: number, b:number):boolean;
+interface ICountString {
+    valueTxt:string;
+    countTxt():number;
 }
 
-var add:ITypeFunc;
-
-add = function(a:number, b:number):boolean {
- return true;
+interface IPrintText {
+    print(value:string):void;
 }
 
-
-interface IColor{
-    (color:string, title?:string):{color:string, title?:string};
-}
-
-var getColor:IColor;
-
-getColor = function(codeColor:string, title?:string): {color:string, title?:string}{
-    if (title) {
-        return {color:codeColor, title:title}
+class MyText implements ICountString, IPrintText {
+    constructor(public valueTxt:string) {}
+    countTxt():number {
+        return this.valueTxt.length
     }
-    return {color:codeColor}
+    print(value:string):void {
+        console.log(value)
+    }
 }
 
-console.log(getColor('#0000'))
-console.log(getColor('#0000', "black"))
+var t = new MyText('textTest')
 
-interface IArrayTypes {
-    [index:number]:string;
+console.log(t.countTxt())
+t.print('printtest')
+
+interface ICarString {
+    name:string;
+    getCar():string;
 }
 
-var a:IArrayTypes;
-a = ['a'];
-console.log(a)
+interface ICarColor {
+    color:string;
+    getColor():string;
+}
+
+interface ICar extends ICarString, ICarColor{
+    power:number;
+    getPower():number;
+}
+
+class Car implements ICar {
+    constructor(public name:string, public color:string, public power:number){}
+    getCar() {
+        return this.name
+    }
+    getColor() {
+        return this.color
+    }
+    getPower() {
+        return this.power
+    }
+}
