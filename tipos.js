@@ -34,4 +34,4 @@ list = "string";
 function printNumber(num) {
     alert(num);
 }
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=tipos.js.map
