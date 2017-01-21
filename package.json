@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "set NODE_ENV=test && mocha"
+    "test": "set NODE_ENV=test && mocha --compilers js:babel-core/register"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.2.0"
+  },
+  "devDependencies": {
+    "sinon": "^1.17.7"
   }
 }
