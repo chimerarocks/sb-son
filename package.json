@@ -13,6 +13,7 @@
     "mocha": "^3.2.0"
   },
   "devDependencies": {
+    "chai-http": "^3.0.0",
     "sinon": "^1.17.7"
   }
 }
