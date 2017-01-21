@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "console-log-hello-world": "^1.0.3"
+    "console-log-hello-world": "^1.0.3",
+    "websocket": "^1.0.24"
   }
 }
