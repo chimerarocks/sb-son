@@ -4,6 +4,8 @@ var handle = require('./handle');
 var events = require('events')
 var emitter = new events.EventEmitter();
 
+require('console-log-hello-world')
+
 // emitter.on('say', say);
 //
 // function say() {
