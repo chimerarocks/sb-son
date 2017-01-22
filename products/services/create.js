@@ -1,19 +1,13 @@
 var Products = require('./../entity/products');
 
 var Service = function(req, res, next) {
-  var find = {};
 
-  if (req.params.id) {
-    find = Products.findById(req.params.id).exec();
-  }
+  var product = new Products(req.body);
 
-  if (!req.params.id) {
-    find = Products.find({}).exec();
-  }
-
-  find
-    .then(function(result) {
-      if (!result) {
+  product
+    .save()
+    .then(function(product) {
+      if (!product) {
         return res.status(404)
           .json({
             status: false,
@@ -24,7 +18,7 @@ var Service = function(req, res, next) {
       return res.status(200)
         .json({
           status: true,
-          data  : result
+          data  : product
         });
     })
     .catch(function(err) {
