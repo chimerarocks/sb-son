@@ -2,7 +2,10 @@ var express = require('express');
 var http = require('http');
 var bodyParser = require('body-parser')
 var morgan = require('morgan');
+var mongoose = require('mongoose');
+
 var app = express();
+var server     = http.createServer(app);
 
 //middlewares
 app.use(morgan('dev'));
@@ -21,9 +24,9 @@ mongoDb.on('error', function() {
 });
 
 //add routes
-require('routes')(app);
+require('./routes')(app);
 
 //fire up express
-server.listen(3000, function() {
+app.listen(3000, function() {
   console.log('Express has been starged');
 });
