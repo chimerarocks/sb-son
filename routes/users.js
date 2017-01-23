@@ -18,4 +18,14 @@ router.post('/', function(req, res) {
   });
 });
 
+router.post('/:id', function(req, res) {
+  //Utiliza os métodos do plugin
+  User.findByIdAndRemove(req.params.id, function(err, deleted) {
+    if (err) {
+      return;
+    }
+    res.redirect('/users');
+  })
+});
+
 module.exports = router;

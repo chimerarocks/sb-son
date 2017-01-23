@@ -9,3 +9,9 @@ commit: criando schema de usuário
 **Aula criando novo usuario**
 
 commit: criando novo usuario
+
+**Aula deletando usuario**
+
+commit: deletando usuario
+
+Apesar de utilizar o plugin pode ser usado o mongoose normalmente
