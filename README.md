@@ -25,3 +25,8 @@ res.send() encerra a resposta com um end()
 res.json() envia um objeto que será compilado para json e executa send automaticamente
 res.render() renderiza um template
 res.status() altera o status da resposta
+
+AULA servindo arquivos estáticos
+commit: servindo arquivos estáticos
+
+Arquivos estáticos são arquivos que podem ser acessados diretamente do browser.
