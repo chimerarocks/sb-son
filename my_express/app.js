@@ -16,6 +16,11 @@ app.use(function(req, res, next) {
   next();
 });
 
+
+app.get('/err', function(req, res, next) {
+  next(new Error('custom error'));
+});
+
 //Sem Router
 app.get('/', function(req, res) {
   res.send('Hello world from express by SON');
@@ -26,6 +31,14 @@ app.use('hello', routes);
 
 //o primeiro argumento ('public') é opcional, no caso os arquivos são acessados usando /public/ e o diretório
 app.use('/public', express.static(path.join(__dirname, 'public')));
+
+//Esses quatro parâmetros indicam que é um middleware de erro, deve obrigatoriamente estar abaixo de todos os middlewares
+app.use(function(err, req, res, next) {
+  res.status(500)
+    .json({
+      message: 'Something wrong happens.'
+    });
+});
 
 // Com http server
 // http.createServer(app).listen(3000, function() {

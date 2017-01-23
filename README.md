@@ -36,6 +36,10 @@ commit: escrevendo middlewares
 
 Existem middlewares application level, built-in, and errors
 
-Aula middlewares
+Aula escrevendo middlewares
 commit: escrevendo middlewares
 
+Aula capturar erros
+commit: capturar erros
+
+O middleware de erro deve sempre vir no final
