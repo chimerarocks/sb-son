@@ -5,6 +5,7 @@ var path        = require('path');
 var app         = express();
 var routes      = require('./routes')
 
+app.set('view engine', 'pug');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
@@ -23,7 +24,10 @@ app.get('/err', function(req, res, next) {
 
 //Sem Router
 app.get('/', function(req, res) {
-  res.send('Hello world from express by SON');
+  res.render('index', {
+    message: 'Hello world from express by SON'
+  });
+  // res.send('Hello world from express by SON');
 });
 
 //Com Router (mais utilizada, pela separação de endpoints)

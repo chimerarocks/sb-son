@@ -43,3 +43,9 @@ Aula capturar erros
 commit: capturar erros
 
 O middleware de erro deve sempre vir no final
+
+Aula template engine
+commit: template engine
+
+Utilizando o pug
+A pasta views é padrão
