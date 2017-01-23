@@ -5,6 +5,7 @@ var path        = require('path');
 var app         = express();
 var routes      = require('./routes')
 
+app.set('views', './views');
 app.set('view engine', 'pug');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({

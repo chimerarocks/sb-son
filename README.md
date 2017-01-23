@@ -48,4 +48,4 @@ Aula template engine
 commit: template engine
 
 Utilizando o pug
-A pasta views é padrão
+A pasta views pode ser alterada
