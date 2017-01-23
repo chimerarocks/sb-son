@@ -26,6 +26,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+passport.use(new BearerStrategy(function(token, done) {
+  User.findOne({
+    access_token: token
+  }, function(err, user) {
+    if (err) {
+      return done(err);
+    } else if(!user) {
+      return done(null, false);
+    }
+    return done(null, user, {scope:'all'})
+  });
+}));
+
 mongoose.connect('mongodb://localhost:27017/passport_local', function(err) {
   if (err) {
     console.log('Mongoose error => ', err);

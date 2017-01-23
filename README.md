@@ -28,3 +28,6 @@ Instalar a estratégia, no caso passport-local
 
 **Aula ajustando novo projeto**
 commit: ajustando novo projeto
+
+**Aula autenticação para API**
+commit: autenticando API

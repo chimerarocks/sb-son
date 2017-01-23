@@ -2,12 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
-var User = require('././user');
-
-// Register
-router.get('/', function(req, res, next) {
-  res.render('register');
-});
+var User = require('./../models/user');
 
 router.post('/', function(req, res) {
   User.create(req.body, function(err, created) {
@@ -20,13 +15,10 @@ router.post('/', function(req, res) {
   });
 });
 
-//Login
-router.get('/login', function(req, res) {
-  res.render('login', {});
-});
-
-router.post('/login', function(req, res) {
-  res.redirect('/');
+router.post('/login', passport.authenticate('bearer', {session:false}),function(req, res) {
+  res.status(200).json({
+    user: req.user
+  });
 });
 
 // Delete
