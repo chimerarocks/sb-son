@@ -15,3 +15,8 @@ commit: criando novo usuario
 commit: deletando usuario
 
 Apesar de utilizar o plugin pode ser usado o mongoose normalmente
+
+**Aula é hora de autenticar via local**
+commit: autenticar via local
+
+Instalar a estratégia, no caso passport-local

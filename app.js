@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
+var LocalStrategy = require('passport-local');
+var User = require('./models/user');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -26,6 +28,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+//autenticaçao
+passport.use(new LocalStrategy(User.authenticate()));
+//autorização
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 mongoose.connect('mongodb://localhost:27017/passport_local', function(err) {
   if (err) {
