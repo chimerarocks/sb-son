@@ -20,3 +20,11 @@ Apesar de utilizar o plugin pode ser usado o mongoose normalmente
 commit: autenticar via local
 
 Instalar a estratégia, no caso passport-local
+
+**Aula é hora de autenticar via local**
+commit: autenticar via local
+
+Instalar a estratégia, no caso passport-local
+
+**Aula ajustando novo projeto**
+commit: ajustando novo projeto
