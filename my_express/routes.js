@@ -12,4 +12,17 @@ router.get('/a?r', function(req, res) {
   res.send('router a?r')
 });
 
+router.get('/params/:name', function(req, res) {
+ res.json({
+   params : req.params,
+   host   : req.host,
+   headers: req.headers,
+   port   : req.port
+ });
+});
+
+router.post('/body', function(req, res) {
+  res.json(req.body);
+});
+
 module.exports = router;
