@@ -18,3 +18,10 @@ commit: request
 Como obter dados da requisição
 Como fazer o parse de Json com bodyParser
 
+AULA tipo de respostas
+commit: tipo de respostas
+
+res.send() encerra a resposta com um end()
+res.json() envia um objeto que será compilado para json e executa send automaticamente
+res.render() renderiza um template
+res.status() altera o status da resposta

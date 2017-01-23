@@ -25,4 +25,16 @@ router.post('/body', function(req, res) {
   res.json(req.body);
 });
 
+router.get('/res', function(req, res) {
+  res.status(201).json({
+    name: 'Joao'
+  });
+  //executa o send automaticamente
+  // res.status(201).send('test'); //executa o end automaticamente
+
+  // res.render('index', {
+  //   data: 'data'
+  // }); //renderizar um template
+});
+
 module.exports = router;
