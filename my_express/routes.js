@@ -1,6 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
+//um middleware somente para essa rota
+router.use(function(req, res, next) {
+  console.log('Iam router custom middleware');
+  next();
+});
+
 router.get('/', function(req, res) {
   res.json({
     message: 'hello world'

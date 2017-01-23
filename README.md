@@ -30,3 +30,12 @@ AULA servindo arquivos estáticos
 commit: servindo arquivos estáticos
 
 Arquivos estáticos são arquivos que podem ser acessados diretamente do browser.
+
+Aula middlewares
+commit: escrevendo middlewares
+
+Existem middlewares application level, built-in, and errors
+
+Aula middlewares
+commit: escrevendo middlewares
+

@@ -10,6 +10,12 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
+//Deve ser declarado antes dos middlewares serão afetadas por ele
+app.use(function(req, res, next) {
+  console.log('im a custom middleware');
+  next();
+});
+
 //Sem Router
 app.get('/', function(req, res) {
   res.send('Hello world from express by SON');
