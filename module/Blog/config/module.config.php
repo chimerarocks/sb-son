@@ -31,4 +31,14 @@ return [
             Controller\BlogController::class => Controller\BlogController::class,
         ],
     ],
+    'view_manager' => [
+        'template_path_stack' => [
+            __DIR__ . '/../view',
+        ],
+        'template_map' => [
+            'layout/layout'           => __DIR__ . '/../../Application/view/layout/layout.phtml',
+            'error/404'               => __DIR__ . '/../../Application/view/error/404.phtml',
+            'error/index'             => __DIR__ . '/../../Application/view/error/index.phtml',
+        ],
+    ],
 ];
