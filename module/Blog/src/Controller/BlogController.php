@@ -14,6 +14,11 @@ class BlogController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel();
+    	$posts = [
+    		'Hello World',
+    		'Hello guys',
+    		'My Post'
+    	];
+        return new ViewModel(['posts' => $posts]);
     }
 }
