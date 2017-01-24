@@ -19,11 +19,16 @@ return [
                 'options' => [
                     'route'    => '/blog',
                     'defaults' => [
-                        'controller' => Controller\IndexController::class,
+                        'controller' => Controller\BlogController::class,
                         'action'     => 'index',
                     ],
                 ],
             ],
         ],
-    ]
+    ],
+    'controllers' => [
+        'invokables' => [
+            Controller\BlogController::class => Controller\BlogController::class,
+        ],
+    ],
 ];
