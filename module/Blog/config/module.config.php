@@ -49,6 +49,9 @@ return [
                 'Symfony',
                 'Laravel'
             ]
+        ],
+        'invokables' => [
+            \Blog\Categories::class => \Blog\Categories::class
         ]
     ]
 ];
