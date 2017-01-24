@@ -12,6 +12,12 @@ use Zend\View\Model\ViewModel;
 
 class BlogController extends AbstractActionController
 {
+    private $categories;
+
+    public function __construct($categories) {
+        $this->categories = $categories;
+    }
+
     public function indexAction()
     {
     	$posts = [
@@ -19,6 +25,7 @@ class BlogController extends AbstractActionController
     		'Hello guys',
     		'My Post'
     	];
-        return new ViewModel(['posts' => $posts]);
+
+        return new ViewModel(['posts' => $posts, 'categories' => $this->categories]);
     }
 }

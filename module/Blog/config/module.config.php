@@ -27,8 +27,8 @@ return [
         ],
     ],
     'controllers' => [
-        'invokables' => [
-            Controller\BlogController::class => Controller\BlogController::class,
+        'factories' => [
+            Controller\BlogController::class => Controller\BlogControllerFactory::class,
         ],
     ],
     'view_manager' => [
@@ -41,4 +41,14 @@ return [
             'error/index'             => __DIR__ . '/../../Application/view/error/index.phtml',
         ],
     ],
+    'service_manager' => [
+        'services' => [
+            'categories' => [
+                'PHP',
+                'Zend',
+                'Symfony',
+                'Laravel'
+            ]
+        ]
+    ]
 ];
