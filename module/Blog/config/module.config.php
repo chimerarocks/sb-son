@@ -13,15 +13,21 @@ return [
 	'router' => [
 		'routes' => [
 			'blog' => [
-				'type' => 'literal',
+				'type' => 'segment',
 				'options' => [
-					'route' => '/blog',
+					//é possivel ter um wildcard pra controller, é melhor criando um alias
+					'route' => '/blog[/:action[/:id]]',
+					'constraints' => [
+						'actions' => '[a-zA-Z][a-zA-Z0-9_-]*',
+						'id' 	  => '[0-9]+'
+					],
 					'defaults' => [
 						'controller' => \Blog\Controller\BlogController::class,
 						'action' => 'index'
 					]
 				]
 			]
+
 		]
 	],
 	'view_manager' => [

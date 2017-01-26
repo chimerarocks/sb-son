@@ -21,4 +21,9 @@ class BlogController extends AbstractActionController
 			'posts' => $postTable->fetchAll()
 		]);
 	}
+
+	public function addAction()
+	{
+		return new ViewModel();
+	}
 }
