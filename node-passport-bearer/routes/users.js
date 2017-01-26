@@ -15,6 +15,12 @@ router.post('/', function(req, res) {
   });
 });
 
+router.get('/hello', passport.authenticate('bearer', {session:false}),function(req, res) {
+  res.status(200).json({
+    body: 'Hello'
+  });
+});
+
 router.post('/login', passport.authenticate('bearer', {session:false}),function(req, res) {
   var obj = {
     username: req.user.username,
