@@ -24,10 +24,21 @@ class PostTable
 			'title' => $post->title,
 			'content' => $post->content
 		];
-		if ((int) $post->id === 0) {
+
+		$id = (int) $post->id;
+
+		if ((int) $id === 0) {
 			$this->tableGateway->insert($data);
 			return;
 		}
+
+		if (!$this->find($id)) {
+			throw new RuntimeException(sprintf(
+				'Could not retrieve the row %d', $id
+			));
+		}
+
+		$this->tableGateway->update($data, ['id' => $id]);
 	}
 
 	public function find($id)

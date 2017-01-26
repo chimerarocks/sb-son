@@ -73,5 +73,16 @@ class BlogController extends AbstractActionController
 				'form' => $form
 			];
 		}
+
+		$form->setData($request->getPost());
+		if (!$form->isValid()) {
+			return [
+				'id' => $id,
+				'form' => $form
+			];
+		}
+
+		$this->table->save($post);
+		return $this->redirect()->toRoute('blog');
 	}
 }
