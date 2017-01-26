@@ -4,14 +4,14 @@ namespace Blog\Model;
 
 class Post
 {
-	private $id;
-	private $title;
-	private $content;
+	public $id;
+	public $title;
+	public $content;
 
 	public function exchangeArray(array $data)
 	{
 		$this->id = (!empty($data['id'])) ? $data['id'] : null;
-		$this->tilte = (!empty($data['tilte'])) ? $data['tilte'] : null;
+		$this->title = (!empty($data['title'])) ? $data['title'] : null;
 		$this->content = (!empty($data['content'])) ? $data['content'] : null;
 	}
 
