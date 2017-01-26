@@ -25,6 +25,7 @@
     .config(function($httpProvider) {
       $httpProvider.interceptors.push('AuthInterceptor');
     })
+    //factories podem ser chamadas como serviços
     .factory('Auth', function($localStorage) {
       return {
         getToken: function() {
@@ -35,6 +36,7 @@
         }
       }
     })
+    //enquanto a aplicação estiver rodando
     .run(function($rootScope, $location, Auth) {
       $rootScope.$on('$routeChangeStart', function(event, next, current) {
         if (next.auth) {
