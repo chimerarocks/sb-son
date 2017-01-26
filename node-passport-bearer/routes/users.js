@@ -16,8 +16,30 @@ router.post('/', function(req, res) {
 });
 
 router.post('/login', passport.authenticate('bearer', {session:false}),function(req, res) {
+  var obj = {
+    username: req.user.username,
+    access_token: req.user.access_token
+  };
   res.status(200).json({
-    user: req.user
+    user: obj
+  });
+});
+
+router.post('/auth', function(req, res) {
+  User.findOne({
+    username: req.body.username,
+    password: req.body.password
+  }, function(err, result) {
+    if (err) {
+      return;
+    }
+    var obj = {
+      username: result.username,
+      access_token: result.access_token
+    };
+    res.status(200).json({
+      user: obj
+    });
   });
 });
 

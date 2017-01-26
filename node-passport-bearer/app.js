@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var BearerStrategy = require('passport-http-bearer').Strategy;
+var cors = require('cors');
 var User = require('./models/user');
 
 var index = require('./routes/index');
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors())
 
 passport.use(new BearerStrategy(function(token, done) {
   User.findOne({
