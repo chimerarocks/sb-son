@@ -1,0 +1,26 @@
+<?php
+
+namespace Blog\Model;
+
+class Post
+{
+	private $id;
+	private $title;
+	private $content;
+
+	public function exchangeArray(array $data)
+	{
+		$this->id = (!empty($data['id'])) ? $data['id'] : null;
+		$this->tilte = (!empty($data['tilte'])) ? $data['tilte'] : null;
+		$this->content = (!empty($data['content'])) ? $data['content'] : null;
+	}
+
+	public function getArrayCopy()
+	{
+		return [
+			'id' 		=> $this->id,
+			'title' 	=> $this->title,
+			'content' 	=> $this->content
+		];
+	}
+}
