@@ -3,6 +3,7 @@
 namespace Blog\Controller;
 
 use Blog\Form\PostForm;
+use Blog\Model\Post;
 use Blog\Model\PostTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -27,8 +28,23 @@ class BlogController extends AbstractActionController
 	{
 		$form = new PostForm();
 		$form->get('submit')->setValue('Add Post');
-		return new ViewModel([
-			'form' => $form
-		]);
+
+		$request = $this->getRequest();
+
+		if (!$request->isPost()) {
+			return new ViewModel([
+				'form' => $form
+			]);
+		}
+		
+		$form->setData($request->getPost());
+        if (!$form->isValid()) {
+            return ['form' => $form];
+        }
+
+		$post = new Post();
+		$post->exchangeArray($form->getData()); //hidratando objeto
+		$this->table->save($post);
+		return $this->redirect()->toRoute('blog');
 	}
 }
