@@ -2,6 +2,7 @@
 
 namespace Blog\Controller;
 
+use Blog\Form\PostForm;
 use Blog\Model\PostTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -24,6 +25,10 @@ class BlogController extends AbstractActionController
 
 	public function addAction()
 	{
-		return new ViewModel();
+		$form = new PostForm();
+		$form->get('submit')->setValue('Add Post');
+		return new ViewModel([
+			'form' => $form
+		]);
 	}
 }

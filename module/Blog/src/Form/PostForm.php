@@ -2,6 +2,8 @@
 
 namespace Blog\Form;
 
+use Zend\Form\Form;
+
 class PostForm extends Form
 {
 	public function __construct($name = null)
