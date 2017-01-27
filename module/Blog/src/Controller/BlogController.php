@@ -85,4 +85,16 @@ class BlogController extends AbstractActionController
 		$this->table->save($post);
 		return $this->redirect()->toRoute('blog');
 	}
+
+	public function deleteAction($id)
+	{
+		$id = $this->params()->fromRoute('id', 0);
+
+		if (!$id) {
+			return $this->redirect()->toRoute('blog');
+		}
+
+		$this->table->delete($id);
+		return $this->redirect()->toRoute('blog');
+	}
 }
