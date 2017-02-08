@@ -3,6 +3,7 @@
 namespace Blog\Controller;
 
 use Blog\Form\PostForm;
+use Blog\InputFilter\PostInputFilter;
 use Blog\Model\Post;
 use Blog\Model\PostTable;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -11,9 +12,11 @@ use Zend\View\Model\ViewModel;
 class BlogController extends AbstractActionController
 {
 	private $table;
+	private $form;
 
-	public function __construct(PostTable $table){
+	public function __construct(PostTable $table, PostForm $form){
 		$this->table = $table;
+		$this->form  = $form;
 	}
 
 	public function indexAction()
@@ -26,7 +29,7 @@ class BlogController extends AbstractActionController
 
 	public function addAction()
 	{
-		$form = new PostForm();
+		$form = $this->form;
 		$form->get('submit')->setValue('Add Post');
 
 		$request = $this->getRequest();
@@ -61,7 +64,7 @@ class BlogController extends AbstractActionController
 			return $this->redirect()->toRoute('blog');
 		}
 
-		$form = new PostForm();
+		$form = $this->form;
 		$form->bind($post);
 		$form->get('submit')->setAttribute('value', 'Edit Post');
 

@@ -2,6 +2,8 @@
 
 namespace Blog\InputFilter;
 
+use Zend\Filter\StringTrim;
+use Zend\Filter\StripTags;
 use Zend\InputFilter\InputFilter;
 
 class PostInputFilter extends InputFilter
@@ -13,7 +15,7 @@ class PostInputFilter extends InputFilter
 			'required' => true,
 			'filters' => [
 				['name' => StringTrim::class],
-				['name' => StripsTags::class]
+				['name' => StripTags::class]
 			]
 		]);
 

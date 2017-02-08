@@ -4,8 +4,11 @@ namespace Blog;
 
 use Blog\Controller\BlogController;
 use Blog\Controller\Factory\BlogControllerFactory;
-use Blog\Model;
+use Blog\Form\Factory\PostFormFactory;
+use Blog\Form\PostForm;
 use Blog\Model\Factory\PostTableFactory;
+use Blog\Model\Factory\PostTableGatewayFactory;
+use Blog\Model\PostTable;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ControllerProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
@@ -20,8 +23,10 @@ class Module implements ConfigProviderInterface, ServiceProviderInterface, Contr
 	public function getServiceConfig()
 	{	return [
 			'factories' => [
-				Model\PostTable::class => PostTableFactory::class,
-				Model\PostTableGateway::class => Model\Factory\PostTableGatewayFactory::class
+				PostTable::class => PostTableFactory::class,
+				Model\PostTableGateway::class => PostTableGatewayFactory::class,
+				PostForm::class => PostFormFactory::class
+
 			]
 		];
 	}
