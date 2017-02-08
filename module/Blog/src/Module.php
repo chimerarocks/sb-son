@@ -3,6 +3,7 @@
 namespace Blog;
 
 use Blog\Controller\BlogController;
+use Blog\Controller\Factory\BlogControllerFactory;
 use Blog\Model;
 use Blog\Model\Factory\PostTableFactory;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
