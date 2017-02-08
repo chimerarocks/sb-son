@@ -11,6 +11,13 @@ class PostForm extends Form
 	{
 		parent::__construct('post');
 
+		//é obrigatório, mas pode ser vazio, pra quando for criar não der pau.
+		$this->add([
+			'name' => 'id',
+			'required' => true,
+			'allow_empty' => true
+		]);
+
 		$this->add([
 			'name' => 'id',
 			'type' => Element\Hidden::class

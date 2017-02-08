@@ -10,7 +10,7 @@
 	$content = $form->get('content');
 	$content->setAttribute('class', 'form-control')
 		->setLabelAttributes(['class' => 'control-label']);
-		
+
 	$submit = $form->get('submit');
 	$submit->setAttribute('class', 'btn btn-primary');
 
@@ -36,6 +36,5 @@
 
 <?php
 echo $this->formSubmit($submit);
-echo $this->formHidden($form->get('id'));
 echo $this->form()->closeTag();
 ?>
