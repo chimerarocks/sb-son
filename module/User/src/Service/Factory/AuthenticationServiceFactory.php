@@ -1,0 +1,25 @@
+<?php
+
+namespace User\Service\Factory;
+
+use Interop\Container\ContainerInterface;
+use Zend\Db\Adapter\AdapterInterface;
+
+class AuthenticationServiceFactoryFactory
+{
+	//pegar adaptador de banco de dados
+	//configurar um adaptador para administrar a autenticação do usuário
+	//criar a sessão para guardarmos o usuário
+	//criar o serviço de AuthenticationService
+	public function __invoke(ContainerInterface $container) 
+	{
+		$passwordCallbackVerify = function ($passwordInDatabase, $passwordSent) {
+			return password_verify($passwordSent, $passwordInDatabase);
+		}
+		$dbAdapter = $container->get(AdapterInterface::class);
+		$authAdapter = new CallbackCheckAdapter($dbAdapter, 'users', 'username', 'password', $passwordCallbackVerify);
+		$resultSetPrototype->setArrayObjectPrototype(new Post());
+
+		return new TableGateway('post', $dbAdapter, null, $resultSetPrototype, $passwordCallbackVerify);
+	}
+}
