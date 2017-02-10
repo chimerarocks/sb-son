@@ -21,7 +21,7 @@ class AuthController extends AbstractActionController
     	if ($this->authService->hasIdentity()) {
     		return $this->redirect()->toRoute('blog');
     	}
-    	
+
     	$form = new LoginForm();
     	$messageError = null;
 
@@ -51,6 +51,7 @@ class AuthController extends AbstractActionController
 
     public function logoutAction()
     {
-    	return new ViewModel();
+    	$this->authService->clearIdentity();
+    	return $this->redirect()->toRoute('login');
     }
 }
