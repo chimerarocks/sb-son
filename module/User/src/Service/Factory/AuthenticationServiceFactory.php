@@ -3,9 +3,11 @@
 namespace User\Service\Factory;
 
 use Interop\Container\ContainerInterface;
+use Zend\Authentication\AuthenticationService;
+use Zend\Authentication\Storage\Session;
 use Zend\Db\Adapter\AdapterInterface;
 
-class AuthenticationServiceFactoryFactory
+class AuthenticationServiceFactory
 {
 	//pegar adaptador de banco de dados
 	//configurar um adaptador para administrar a autenticação do usuário
@@ -18,8 +20,7 @@ class AuthenticationServiceFactoryFactory
 		}
 		$dbAdapter = $container->get(AdapterInterface::class);
 		$authAdapter = new CallbackCheckAdapter($dbAdapter, 'users', 'username', 'password', $passwordCallbackVerify);
-		$resultSetPrototype->setArrayObjectPrototype(new Post());
-
-		return new TableGateway('post', $dbAdapter, null, $resultSetPrototype, $passwordCallbackVerify);
+		$storage = new Session();
+		return new AuthenticationService($storage, $authAdapter);
 	}
 }

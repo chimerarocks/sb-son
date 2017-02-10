@@ -8,6 +8,13 @@ use Zend\View\Model\ViewModel;
 
 class AuthController extends AbstractActionController
 {
+	private $authService;
+
+	public function __construct(AuthenticationServiceInterface $authService)
+	{
+		$this->authService = $authService;
+	}
+
     public function loginAction()
     {
     	return new ViewModel([

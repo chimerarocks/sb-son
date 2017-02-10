@@ -3,6 +3,8 @@
 namespace User;
 
 use User\Controller\AuthController;
+use User\Service\Factory\AuthenticationServiceFactory;
+use Zend\Authentication\AuthenticationServiceInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ControllerProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
@@ -18,7 +20,7 @@ class Module implements ConfigProviderInterface, ServiceProviderInterface, Contr
 	public function getServiceConfig()
 	{	return [
 			'factories' => [
-
+				AuthenticationServiceInterface::class => AuthenticationServiceFactory::class
 			]
 		];
 	}
