@@ -18,6 +18,15 @@
 	$form->prepare();
 ?>	
 
+<?php if($messageError): ?>
+	<div class="alert alert-danger alert-dismissable" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&lines;</span>
+		</button>
+		<strong>Erro!</strong> <?= $messageError ?>
+	</div>
+<?php endif; ?>
+
 <div class="row">
 	<div class="col-md-6">
 		<?= $this->form()->openTag($form); ?>

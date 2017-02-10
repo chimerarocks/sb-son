@@ -18,7 +18,12 @@ class AuthController extends AbstractActionController
 
     public function loginAction()
     {
+    	if ($this->authService->hasIdentity()) {
+    		return $this->redirect()->toRoute('blog');
+    	}
+    	
     	$form = new LoginForm();
+    	$messageError = null;
 
     	if ($this->getRequest()->isPost()) {
     		$data = $this->getRequest()->getPost();
@@ -31,13 +36,16 @@ class AuthController extends AbstractActionController
 
     			$result = $this->authService->authenticate();
     			if ($result->isValid()) {
-    				var_dump($this->authService->getIdentity());
+    				return $this->redirect()->toRoute('blog');
+    			} else {
+    				$messageError = 'Login inválido.';
     			}
     		}
     	}
 
     	return new ViewModel([
-    		'form' => $form
+    		'form' => $form,
+    		'messageError' => $messageError
     	]);
     }
 
