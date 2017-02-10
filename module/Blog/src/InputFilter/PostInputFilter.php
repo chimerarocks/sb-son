@@ -14,7 +14,7 @@ class PostInputFilter extends InputFilter
 		//é obrigatório, mas pode ser vazio, pra quando for criar não der pau.
 		$this->add([
 			'name' => 'id',
-			'required' => true,
+			'required' => false,
 			'allow_empty' => true
 		]);
 

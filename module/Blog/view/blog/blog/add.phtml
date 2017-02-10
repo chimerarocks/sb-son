@@ -14,7 +14,7 @@
 	$submit = $form->get('submit');
 	$submit->setAttribute('class', 'btn btn-primary');
 
-	$form->setAttribute('action', $this->url('blog', ['action'=>'add']));
+	$form->setAttribute('action', $this->url('admin-blog/blog', ['action'=>'add']));
 	$form->prepare();
 
 	echo $this->form()->openTag($form);

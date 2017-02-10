@@ -42,26 +42,27 @@ class BlogController extends AbstractActionController
 		
 		$form->setData($request->getPost());
         if (!$form->isValid()) {
+        	print_r($form->getMessages());
             return ['form' => $form];
         }
 
 		$post = new Post();
 		$post->exchangeArray($form->getData()); //hidratando objeto
 		$this->table->save($post);
-		return $this->redirect()->toRoute('blog');
+		return $this->redirect()->toRoute('admin-blog/blog');
 	}
 
 	public function editAction()
 	{
 		$id = (int) $this->params()->fromRoute('id', 0);
 		if (!$id) {
-			return $this->redirect()->toRoute('blog');
+			return $this->redirect()->toRoute('admin-blog/blog');
 		}
 
 		try {
 			$post = $this->table->find($id);
 		} catch (\Exception $e) {
-			return $this->redirect()->toRoute('blog');
+			return $this->redirect()->toRoute('admin-blog/blog');
 		}
 
 		$form = $this->form;
@@ -86,7 +87,7 @@ class BlogController extends AbstractActionController
 		}
 
 		$this->table->save($post);
-		return $this->redirect()->toRoute('blog');
+		return $this->redirect()->toRoute('admin-blog/blog');
 	}
 
 	public function deleteAction($id)
@@ -94,10 +95,10 @@ class BlogController extends AbstractActionController
 		$id = $this->params()->fromRoute('id', 0);
 
 		if (!$id) {
-			return $this->redirect()->toRoute('blog');
+			return $this->redirect()->toRoute('admin-blog/blog');
 		}
 
 		$this->table->delete($id);
-		return $this->redirect()->toRoute('blog');
+		return $this->redirect()->toRoute('admin-blog/blog');
 	}
 }

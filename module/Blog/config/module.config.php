@@ -12,21 +12,31 @@ return [
 	],
 	'router' => [
 		'routes' => [
-			'blog' => [
-				'type' => 'segment',
+			'admin-blog' => [
+				'type' => 'literal',
 				'options' => [
-					//é possivel ter um wildcard pra controller, é melhor criando um alias
-					'route' => '/blog[/:action[/:id]]',
-					'constraints' => [
-						'actions' => '[a-zA-Z][a-zA-Z0-9_-]*',
-						'id' 	  => '[0-9]+'
-					],
-					'defaults' => [
-						'controller' => \Blog\Controller\BlogController::class,
-						'action' => 'index'
+					'route' => '/admin'
+				],
+				'may_terminate' => false,
+				'child_routes' => [
+					'blog' => [
+						'type' => 'segment',
+						'options' => [
+							//é possivel ter um wildcard pra controller, é melhor criando um alias
+							'route' => '/blog[/:action[/:id]]',
+							'constraints' => [
+								'actions' => '[a-zA-Z][a-zA-Z0-9_-]*',
+								'id' 	  => '[0-9]+'
+							],
+							'defaults' => [
+								'controller' => \Blog\Controller\BlogController::class,
+								'action' => 'index'
+							]
+						]
 					]
 				]
-			]
+			],
+			
 
 		]
 	],
