@@ -1,17 +1,12 @@
 <?php
 
-namespace Blog;
+namespace User;
 
-use Blog\Controller\BlogController;
-use Blog\Controller\Factory\BlogControllerFactory;
-use Blog\Form\Factory\PostFormFactory;
-use Blog\Form\PostForm;
-use Blog\Model\Factory\PostTableFactory;
-use Blog\Model\Factory\PostTableGatewayFactory;
-use Blog\Model\PostTable;
+use User\Controller\AuthController;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ControllerProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
+use Zend\ServiceManager\Factory\InvokableFactory;
 
 class Module implements ConfigProviderInterface, ServiceProviderInterface, ControllerProviderInterface
 {
@@ -23,9 +18,6 @@ class Module implements ConfigProviderInterface, ServiceProviderInterface, Contr
 	public function getServiceConfig()
 	{	return [
 			'factories' => [
-				PostTable::class => PostTableFactory::class,
-				Model\PostTableGateway::class => PostTableGatewayFactory::class,
-				PostForm::class => PostFormFactory::class
 
 			]
 		];
@@ -35,7 +27,7 @@ class Module implements ConfigProviderInterface, ServiceProviderInterface, Contr
 	{
 		return [
 			'factories' => [
-				BlogController::class => BlogControllerFactory::class
+				AuthController::class => InvokableFactory::class
 			]
 		];
 	}

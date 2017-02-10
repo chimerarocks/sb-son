@@ -5,29 +5,36 @@ namespace User;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
-	'controllers' => [
-		'factories' => [
-			// \User\Controller\UserController::class => InvokableFactory::class
-		]
-	],
 	'router' => [
 		'routes' => [
-			'user' => [
-				'type' => 'segment',
+			'login' => [
+				'type' => 'literal',
 				'options' => [
-					//é possivel ter um wildcard pra controller, é melhor criando um alias
-					'route' => '/user[/:action[/:id]]',
+					'route' => '/auth/login',
 					'constraints' => [
 						'actions' => '[a-zA-Z][a-zA-Z0-9_-]*',
 						'id' 	  => '[0-9]+'
 					],
 					'defaults' => [
-						'controller' => \User\Controller\UserController::class,
-						'action' => 'index'
+						'controller' => \User\Controller\AuthController::class,
+						'action' => 'login'
+					]
+				]
+			],
+			'logout' => [
+				'type' => 'literal',
+				'options' => [
+					'route' => '/auth/logout',
+					'constraints' => [
+						'actions' => '[a-zA-Z][a-zA-Z0-9_-]*',
+						'id' 	  => '[0-9]+'
+					],
+					'defaults' => [
+						'controller' => \User\Controller\AuthController::class,
+						'action' => 'logout'
 					]
 				]
 			]
-
 		]
 	],
 	'view_manager' => [
