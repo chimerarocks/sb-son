@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Blog\Model;
 
 use Zend\Db\TableGateway\Exception\RuntimeException;

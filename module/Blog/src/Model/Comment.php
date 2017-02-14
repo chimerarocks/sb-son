@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Blog\Model;
 
 class Comment

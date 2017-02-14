@@ -7,6 +7,7 @@ class Post
 	public $id;
 	public $title;
 	public $content;
+	public $comments;
 
 	public function exchangeArray(array $data)
 	{
