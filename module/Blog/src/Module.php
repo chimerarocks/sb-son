@@ -27,8 +27,9 @@ class Module implements ConfigProviderInterface, ServiceProviderInterface, Contr
 			'factories' => [
 				PostTable::class => PostTableFactory::class,
 				Model\PostTableGateway::class => PostTableGatewayFactory::class,
-				PostForm::class => PostFormFactory::class
-
+				PostForm::class => PostFormFactory::class,
+				CommentTable::class => CommentTableFactory::class,
+				Model\CommentTableGateway::class => CommentTableGatewayFactory::class,
 			]
 		];
 	}
