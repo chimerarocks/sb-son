@@ -36,8 +36,20 @@ return [
 					]
 				]
 			],
-			
-
+            'site-post' => [
+                'type' => 'segment',
+                'options' => [
+                    'route' => '/post[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ],
+                    'defaults' => [
+                        'controller' => Controller\PostController::class,
+                        'action' => 'index'
+                    ]
+                ]
+            ]
 		]
 	],
 	'view_manager' => [
