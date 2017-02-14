@@ -9,6 +9,17 @@ insert into post(title, content) values ('Post 2', 'Content 2');
 insert into post(title, content) values ('Post 3', 'Content 3');
 insert into post(title, content) values ('Post 4', 'Content 4');		
 
+CREATE TABLE comments
+(
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  content TEXT NOT NULL,
+  post_id INTEGER NOT NULL
+);
+
+insert into comments(content, post_id) values('Comentario 1', 1);
+insert into comments(content, post_id) values('Comentario 2', 1);
+insert into comments(content, post_id) values('Comentario 3', 2);
+insert into comments(content, post_id) values('Comentario 4', 2);
 
 create table users (
 	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
