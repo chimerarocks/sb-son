@@ -36,3 +36,5 @@ Rodando doctrine
 ```bash
 $ vendor/bin/doctrine-module
 ```
+
+Definir configurações do doctrine - doctrine.global.php
