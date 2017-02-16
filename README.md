@@ -26,3 +26,13 @@ Adicione a biblioteca do DoctrineORMModule
 $ composer require doctrine/doctrine-orm-module
 ```
 
+Criação dos arquivos de configuração do doctrine
+
+doctrine-config.global.php
+doctrine-module.php
+aliases (Config, configuration, Configuration)
+
+Rodando doctrine
+```bash
+$ vendor/bin/doctrine-module
+```
