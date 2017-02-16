@@ -20,4 +20,9 @@ Atualize o projeto
 $ composer update
 ```
 
- 
+Adicione a biblioteca do DoctrineORMModule
+
+```bash
+$ composer require doctrine/doctrine-orm-module
+```
+
