@@ -1,9 +1,13 @@
 <?php
 use Zend\Expressive\Container\ApplicationFactory;
 use Zend\Expressive\Helper;
+use App\Middleware;
 
 return [
     'dependencies' => [
+        'invokables' => [
+            Middleware\DoctrineMiddleware::class => Middleware\DoctrineMiddleware::class
+        ],
         'factories' => [
             Helper\ServerUrlMiddleware::class => Helper\ServerUrlMiddlewareFactory::class,
             Helper\UrlHelperMiddleware::class => Helper\UrlHelperMiddlewareFactory::class,
@@ -48,6 +52,7 @@ return [
             'middleware' => [
                 ApplicationFactory::ROUTING_MIDDLEWARE,
                 Helper\UrlHelperMiddleware::class,
+                Middleware\DoctrineMiddleware::class,
                 // Add more middleware here that needs to introspect the routing
                 // results; this might include:
                 // - route-based authentication

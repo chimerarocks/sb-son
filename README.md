@@ -38,3 +38,7 @@ $ vendor/bin/doctrine-module
 ```
 
 Definir configurações do doctrine - doctrine.global.php
+
+Definir configurações de annotation - doctrine.global.php , doctrine.php , DoctrineMiddleware
+
+Registrar DoctrineMiddleware
