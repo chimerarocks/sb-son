@@ -8,6 +8,8 @@ return [
         ],
         'factories' => [
             App\Action\HomePageAction::class => App\Action\HomePageFactory::class,
+            App\Action\Product\ProductListPageAction::class 
+                => App\Action\Product\Factory\ProductListPageFactory::class,
         ],
     ],
 
@@ -22,6 +24,12 @@ return [
             'name' => 'api.ping',
             'path' => '/api/ping',
             'middleware' => App\Action\PingAction::class,
+            'allowed_methods' => ['GET'],
+        ],
+        [
+            'name' => 'product.list',
+            'path' => '/admin/products',
+            'middleware' => App\Action\Product\ProductListPageAction::class,
             'allowed_methods' => ['GET'],
         ],
     ],
