@@ -25,4 +25,18 @@ class UsersController extends Controller
         $user = User::create($request->all());
         return $user;
     }
+
+    public function update(Request $request, $id) 
+    {
+    	$user = User::findOrFail($id);
+        $user->update($request->all());
+        return $user;
+    }
+
+    public function destroy($id) 
+    {
+    	$user = User::findOrFail($id);
+        $user->delete();
+        return $user;
+    }
 }

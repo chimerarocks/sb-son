@@ -23,4 +23,7 @@ $app->get('/hello/{name}', [
 $app->group(['prefix' => 'api'], function() use ($app) {
 	$app->get('/users', 'Api\UsersController@index');
 	$app->get('/users/{id}', 'Api\UsersController@show');
+	$app->post('/users', 'Api\UsersController@create');
+	$app->put('/users/{id}', 'Api\UsersController@update');
+	$app->delete('/users/{id}', 'Api\UsersController@destroy');
 });
