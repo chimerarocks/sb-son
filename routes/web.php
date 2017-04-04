@@ -18,4 +18,9 @@ $app->get('/', function () use ($app) {
 $app->get('/hello/{name}', [
 	'as' 	=> 'hello',
 	'uses' 	=> 'HelloController@index'
-	]);
+]);
+
+$app->group(['prefix' => 'api'], function() use ($app) {
+	$app->get('/users', 'Api\UsersController@index');
+	$app->get('/users/{id}', 'Api\UsersController@show');
+});
