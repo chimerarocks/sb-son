@@ -18,3 +18,6 @@ family = {
 
 print(d)
 print(family)
+
+for car,color in cars.items():
+    print(car + '-' + color)
