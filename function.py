@@ -10,3 +10,10 @@ def call_numbers_with_limit(limit):
         print(number)
 
 call_numbers_with_limit(3)
+
+def calculator(x=10, y=2):
+    return x-y
+
+result = calculator(y=5)
+
+print("Result: ", result)
