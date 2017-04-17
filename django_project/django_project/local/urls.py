@@ -1,0 +1,1 @@
+/home/jaozinx/my-projects/SON/iniciando-com-django/django_project/django_project/urls.py
