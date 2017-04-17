@@ -6,3 +6,8 @@
     - source /usr/local/bin/virtualenvwrapper.sh
     - mkvirtualenv [env name]
     - workon [env name]
+
+2º Instalar o django
+    - pip install django
+3º Criar projeto
+    - django-admin startproject [name]
