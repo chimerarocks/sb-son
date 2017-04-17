@@ -4,7 +4,7 @@
 <body>
 	<div class="container">
 		<div class="col-md-3">
-			<h1>Blog - {{name}}</h1>
+			<a href="{% url 'blog.home' %}"><h1>Blog - {{name}}</h1></a>
 			<aside class="row">
 				<h3>Languages</h3>
 
@@ -26,11 +26,13 @@
 				<ul>
 					{% for category in categories %}
 					<li>
+						<a href="{% url 'blog.posts_by_category' category.pk %}">
 						{% if category.name == 'python' %}
 							<b>{{category.name}}</b>
 						{% else %}
 							<i>{{category.name}}</i>
 						{% endif %}
+						</a>
 					</li>
 					{% endfor %}
 				</ul>	
