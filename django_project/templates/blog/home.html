@@ -11,3 +11,16 @@
 	</li>
 	{% endfor %}
 </ul>
+
+<h1>Categories</h1>
+<ul>
+	{% for category in categories %}
+	<li>
+		{% if category.name == 'python' %}
+			<b>{{category.name}}</b>
+		{% else %}
+			<i>{{category.name}}</i>
+		{% endif %}
+	</li>
+	{% endfor %}
+</ul>
